@@ -151,7 +151,9 @@
 @media (max-width: 992px) {
   .hero-section {
     min-height: auto; 
-    padding: 140px 5% 40px 5%; 
+    /* --- YAHAN CHANGE KIYA HAI --- */
+    /* Padding top 140px se 190px kar di taake pura block thora neechay shift ho jaye */
+    padding: 190px 5% 40px 5%; 
     height: auto;
   }
 
@@ -170,8 +172,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start; 
-    /* --- MAGIC YAHAN HAI --- */
-    /* Sirf is text wale hissay ko akelay 50px neechay khiska diya hai */
     margin-top: 50px; 
   }
 
@@ -222,7 +222,7 @@
 
   .bulb-span { margin: 0 -3px; }
 
-  /* PICTURE RIGHT SIDE PAR (Ye apni purani theek jagah par hai) */
+  /* PICTURE RIGHT SIDE PAR */
   .hero-image-area {
     order: 2;
     flex: 1; 
