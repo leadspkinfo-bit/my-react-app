@@ -20,7 +20,8 @@
       transparent 2deg, 
       transparent 4deg
     );
-  background-attachment: fixed;
+  /* LAG FIX: fixed ki jagah scroll kar diya taake site smooth chale */
+  background-attachment: scroll; 
   
   backdrop-filter: blur(10px); 
   z-index: 1000;
@@ -40,15 +41,13 @@
 }
 
 .navbar-logo-img {
-  /* Navbar ko chhere baghair pic ko bara karne ke liye scale use kiya hai */
   height: auto; 
   width: auto;  
   max-height: 80px; 
   max-width: 250px; 
   object-fit: contain; 
-  /* --- ZOOM FIX --- */
   transform: scale(1.5); 
-  transform-origin: left center; /* Taa ke logo left side se hi grow kare */
+  transform-origin: left center; 
   transition: transform 0.3s ease; 
 }
 
@@ -98,6 +97,14 @@
   transform: translateY(-2px);
 }
 
+/* --- HAMBURGER MENU ICON (Hidden on Desktop) --- */
+.menu-icon {
+  display: none;
+  color: #f7df1e;
+  font-size: 28px;
+  cursor: pointer;
+}
+
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 992px) {
   .navbar {
@@ -105,11 +112,38 @@
   }
   
   .navbar-logo-img {
-    max-height: 50px; 
-    transform: scale(1.2); /* Mobile pe thora kam zoom rakha hai */
+    max-height: 45px; /* Mobile par wazeh lekin fit */
+    transform: scale(1); /* Mobile pe zoom khatam kar diya taake layout na tootay */
+    transform-origin: center left;
   }
 
+  /* Hamburger icon dikhao mobile pe */
+  .menu-icon {
+    display: block; 
+  }
+
+  /* Links ka dropdown design (jo click pe khulega) */
   .nav-links {
-    display: none; 
+    position: absolute;
+    top: 100%; /* Navbar ke bilkul neechay */
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 4, 40, 0.95);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+    display: none; /* Filhal hidden hai, React se show karwayenge */
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  }
+
+  /* Jab user menu par click karega toh ye class chalegi */
+  .nav-links.active {
+    display: flex; 
+  }
+
+  .contact-btn {
+    display: none; /* Contact button ko mobile top bar se chupa diya */
   }
 }
