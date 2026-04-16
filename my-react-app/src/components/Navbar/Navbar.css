@@ -134,36 +134,36 @@
   user-select: none;
 }
 
-/* --- MOBILE RESPONSIVE (Yahan jadoo kiya hai) --- */
+/* --- MOBILE RESPONSIVE (SUPER ZOOMED IN VERSION) --- */
 @media (max-width: 992px) {
-  /* Uper wali patti */
+  /* Uper wali patti ki spacing theek ki */
   .top-bar {
-    padding: 12px 6%;
+    padding: 15px 5%;
   }
   
-  /* 3 Lines (Menu) ko bara aur wazeh kar diya */
+  /* 3 Lines (Menu) ko FULL BARA aur wazeh kar diya */
   .menu-icon {
     display: block; 
-    font-size: 28px; 
+    font-size: 38px; /* 👈 Yahan jadoo hai (Bara Menu) */
   }
 
   /* Social Icons ke darmiyan fasla aur unka size bara kar diya */
   .top-bar-right {
-    gap: 20px; 
+    gap: 25px; 
   }
   .top-bar-right a {
-    font-size: 22px; 
+    font-size: 26px; /* 👈 Icons baray kar diye */
   }
 
   /* Neechay wali navbar ki setting */
   .navbar {
-    padding: 12px 6%; 
+    padding: 15px 5%; 
   }
   
-  /* Logo ko screen ke hisaab se theek zoom kar diya */
+  /* Logo ko FULL ZOOM IN kar diya */
   .navbar-logo-img {
-    max-height: 55px; 
-    transform: scale(1.4); 
+    max-height: 70px; /* 👈 Badi height */
+    transform: scale(1.8); /* 👈 Full Zoom In */
     transform-origin: left center;
   }
 
