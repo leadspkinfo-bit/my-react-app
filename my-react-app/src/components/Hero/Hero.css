@@ -18,7 +18,7 @@
       transparent 4deg
     );
   background-attachment: fixed;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .hero-content {
@@ -31,110 +31,146 @@
   z-index: 2;
 }
 
-/* --- DESKTOP STYLES --- */
-.hero-text-area { flex: 1; display: flex; flex-direction: column; }
-.title-wrapper { display: flex; flex-direction: column; width: fit-content; }
-.hero-think { color: #ffffff; font-size: 24px; font-weight: 900; letter-spacing: 6px; }
-.hero-title { font-family: 'Permanent Marker', cursive; font-size: clamp(50px, 8vw, 100px); color: #f7df1e; line-height: 1; transform: rotate(-2deg); display: flex; align-items: center; }
-.title-bulb-img { height: 1em; width: auto; mix-blend-mode: screen; animation: bulbFloat 3s ease-in-out infinite; }
-@keyframes bulbFloat { 0%, 100% { transform: scale(1.35) translateY(-2px); } 50% { transform: scale(1.35) translateY(-8px); } }
-.hero-with { font-size: 24px; letter-spacing: 6px; align-self: flex-end; color: #ffffff; transform: translateX(-40px); }
-.hero-description { margin-top: 40px; font-size: 16px; line-height: 1.8; color: #cccccc; max-width: 500px; }
-.hero-image-area { flex: 1; display: flex; justify-content: flex-end; }
-.hero-front-img { width: 100%; max-width: 500px; filter: drop-shadow(0px 15px 50px rgba(0,0,0,0.5)); }
+.hero-text-area {
+  flex: 1; 
+}
 
-/* ========================================= */
-/* --- MOBILE VIEW (LEADSPK CLEAN FLOW) --- */
-/* ========================================= */
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  text-align: left; 
+}
+
+.hero-think {
+  color: #ffffff;
+  font-size: 24px;       
+  font-weight: 900;      
+  letter-spacing: 6px;   
+  margin: 0 0 -5px 0;    
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: block;
+}
+
+.hero-title {
+  font-family: 'Permanent Marker', cursive; 
+  font-size: clamp(50px, 8vw, 100px); 
+  color: #f7df1e;
+  line-height: 1;
+  margin: 0;
+  font-weight: 400; 
+  letter-spacing: 8px; 
+  transform: rotate(-2deg); 
+  display: flex; 
+  align-items: center; 
+  text-transform: uppercase;
+  filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.3));
+}
+
+.bulb-span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 -10px; 
+  position: relative;
+  z-index: 2;
+}
+
+/* --- UPDATE: Bulb par Floating Animation lagayi --- */
+.title-bulb-img {
+  height: 1em; 
+  width: auto;
+  object-fit: contain;
+  background: transparent !important;
+  mix-blend-mode: screen; 
+  filter: drop-shadow(0px 5px 15px rgba(247, 223, 30, 0.4));
+  
+  /* Ye animation 3 seconds ki hai taake smoothly float kare */
+  animation: bulbFloat 3s ease-in-out infinite; 
+}
+
+/* --- NAYA: Floating Effect ki Keyframes --- */
+@keyframes bulbFloat {
+  0% { transform: scale(1.35) translateY(-2px); }
+  50% { transform: scale(1.35) translateY(-8px); } /* Thora sa upar jayega */
+  100% { transform: scale(1.35) translateY(-2px); } /* Wapas apni jagah par aayega */
+}
+
+.hero-with {
+  font-size: 24px;
+  letter-spacing: 6px;
+  align-self: flex-end; 
+  color: #ffffff;
+  font-weight: 900;
+  margin-top: 0px; 
+  transform: translateX(-40px); 
+}
+
+.hero-description {
+  margin-top: 40px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #cccccc;
+  max-width: 500px;
+}
+
+.hero-image-area {
+  flex: 1; 
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative;
+}
+
+.hero-front-img {
+  width: 100%; 
+  max-width: 500px; 
+  height: auto;
+  object-fit: contain;
+  display: block;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  background: transparent !important;
+  mix-blend-mode: lighten; 
+  filter: brightness(1.1) drop-shadow(0px 15px 50px rgba(0,0,0,0.5));
+}
+
+.hero-front-img:hover {
+  transform: scale(1.04) translateY(-15px);
+  filter: brightness(1.2) drop-shadow(0px 25px 60px rgba(247, 223, 30, 0.2)); 
+}
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.stat-item h2 { font-size: 36px; color: #f7df1e; margin: 0; font-weight: 800; }
+.stat-item p { font-size: 12px; color: #ffffff; text-transform: uppercase; margin-top: 5px; }
+.stat-divider { width: 1px; height: 40px; background: rgba(255, 255, 255, 0.2); }
+
 @media (max-width: 992px) {
-  .hero-section {
-    min-height: 100vh;
-    padding: 180px 5% 40px 5%; /* Spacing for Navbars */
-    display: block;
-    height: auto;
-  }
-
   .hero-content {
     flex-direction: column;
-    align-items: center;
-    gap: 30px;
-  }
-
-  /* 1. TITLE SECTION (Bold but not broken) */
-  .hero-text-area { 
-    width: 100%;
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .title-wrapper { align-items: center; width: 100%; text-align: center; }
-  .hero-think { font-size: 18px; letter-spacing: 5px; color: #f7df1e; margin-bottom: 5px; }
-  
-  .hero-title { 
-    font-size: clamp(35px, 12vw, 60px); /* Balanced Zoom */
-    justify-content: center; 
-    transform: none; 
-    width: 100%;
-    line-height: 1;
-  }
-  
-  /* FIX: Bulb ko mobile par control kiya */
-  .title-bulb-img {
-    height: 45px !important; /* Fixed height for bulb on mobile */
-    width: auto !important;
-    margin: 0 5px;
-  }
-
-  .hero-with { 
-    align-self: center; 
-    transform: none; 
-    font-size: 18px; 
-    margin-top: 5px;
-    letter-spacing: 4px;
-  }
-
-  /* 2. IMAGE SECTION (Normal Zoom) */
-  .hero-image-area {
-    order: 2;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  .hero-front-img {
-    max-width: 250px; /* LeadsPK style size */
-    width: 75%;
-    transform: none;
-    filter: drop-shadow(0px 10px 25px rgba(0,0,0,0.5));
-  }
-
-  /* 3. CONTENT SECTION (Clean Layout) */
-  .hero-scroll-content {
-    order: 3;
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  .hero-description {
     text-align: center;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #ffffff;
+    padding-top: 100px;
+  }
+  .hero-text-area { order: 2; }
+  .hero-image-area {
+    order: 1;
+    justify-content: center;
+    width: 100%;
     margin-bottom: 30px;
   }
-
-  .hero-stats { 
-    display: flex;
-    justify-content: center; 
-    gap: 15px; 
-    margin-top: 0;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 15px;
+  .hero-front-img {
+    max-width: 400px; 
+    width: 95%;
   }
-
-  .stat-item h2 { font-size: 24px; color: #f7df1e; margin: 0; }
-  .stat-item p { font-size: 10px; margin-top: 3px; }
-  .stat-divider { width: 1px; height: 30px; background: rgba(255, 255, 255, 0.2); }
+  .title-wrapper { align-items: center; margin: 0 auto; text-align: center; }
+  .hero-title { transform: rotate(0); justify-content: center; }
+  .hero-with { transform: translateX(0); align-self: center; margin-top: 5px; }
+  .hero-stats { justify-content: center; gap: 20px; }
+  .bulb-span { margin: 0 -8px; }
 }
