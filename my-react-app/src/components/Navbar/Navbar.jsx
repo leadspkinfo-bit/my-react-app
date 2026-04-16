@@ -6,24 +6,20 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    // Ab humne dono navbars ko ek 'header-wrapper' mein band kar diya hai
     <header className="header-wrapper">
       
-      {/* --- TOP BAR (Uper wali patti) --- */}
       <div className="top-bar">
         <div className="top-bar-left">
-          {/* Laptop par number dikhega, Mobile par hide ho jayega */}
           <span className="contact-number">
             <i className="fas fa-phone-alt"></i> +92 300 1234567
           </span>
-          {/* Mobile par Menu (3 lines) yahan aayengi */}
-          <div className="menu-icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {/* Menu Icon (3 Lines) - Ispe click se menu khulega */}
+          <div className="menu-icon" onClick={() => setIsMobileMenuOpen(true)}>
             &#9776; 
           </div>
         </div>
 
         <div className="top-bar-right">
-          {/* Social Icons (Aap inke href mein apne links daal sakte hain) */}
           <a href="#"><i className="fab fa-whatsapp"></i></a>
           <a href="#"><i className="fab fa-instagram"></i></a>
           <a href="#"><i className="fab fa-tiktok"></i></a>
@@ -32,7 +28,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* --- MAIN NAVBAR (Neechay wali patti) --- */}
       <nav className="navbar">
         <div className="logo-container">
           <a href="/">
@@ -40,11 +35,19 @@ const Navbar = () => {
           </a>
         </div>
 
+        {/* --- SIDEBAR MENU --- */}
         <ul className={isMobileMenuOpen ? "nav-links active" : "nav-links"}>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About LeadsPk</a></li>
-          <li><a href="#blog">Blog</a></li>
+          
+          {/* Close Icon (X) */}
+          <div className="close-icon" onClick={() => setIsMobileMenuOpen(false)}>
+            &times;
+          </div>
+
+          {/* Links: onClick pe menu khud band ho jayega */}
+          <li><a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
+          <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
+          <li><a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a></li>
+          <li><a href="#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
         </ul>
 
         <a href="#contact" className="contact-btn">Contact Us</a>

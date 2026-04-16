@@ -1,12 +1,10 @@
-/* --- POORA HEADER (Top + Bottom Bar) --- */
+/* --- POORA HEADER --- */
 .header-wrapper {
   position: fixed; 
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  
-  /* Magic Background ab poore header pe lagaya hai */
   background-color: #000428; 
   background-image: 
     radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
@@ -23,7 +21,6 @@
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 
-/* --- TOP BAR DESIGN --- */
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -66,7 +63,6 @@
   transform: scale(1.1);
 }
 
-/* --- MAIN NAVBAR DESIGN --- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -134,62 +130,85 @@
   user-select: none;
 }
 
-/* --- MOBILE RESPONSIVE (SUPER ZOOMED IN VERSION) --- */
+/* Desktop pe Close (X) button hide rakhna hai */
+.close-icon {
+  display: none; 
+}
+
+/* --- MOBILE RESPONSIVE (SIDEBAR MENU JADOO) --- */
 @media (max-width: 992px) {
-  /* Uper wali patti ki spacing theek ki */
   .top-bar {
     padding: 15px 5%;
   }
   
-  /* 3 Lines (Menu) ko FULL BARA aur wazeh kar diya */
   .menu-icon {
     display: block; 
-    font-size: 38px; /* 👈 Yahan jadoo hai (Bara Menu) */
+    font-size: 38px; 
   }
 
-  /* Social Icons ke darmiyan fasla aur unka size bara kar diya */
   .top-bar-right {
     gap: 25px; 
   }
   .top-bar-right a {
-    font-size: 26px; /* 👈 Icons baray kar diye */
+    font-size: 26px; 
   }
 
-  /* Neechay wali navbar ki setting */
   .navbar {
     padding: 15px 5%; 
   }
   
-  /* Logo ko FULL ZOOM IN kar diya */
   .navbar-logo-img {
-    max-height: 70px; /* 👈 Badi height */
-    transform: scale(1.8); /* 👈 Full Zoom In */
+    max-height: 70px; 
+    transform: scale(1.8); 
     transform-origin: left center;
   }
 
-  /* Mobile par fuzool cheezein chupa di hain */
-  .contact-number {
-    display: none; 
-  }
-  .contact-btn {
+  .contact-number, .contact-btn {
     display: none; 
   }
 
-  /* Links dropdown ka design */
+  /* --- SIDEBAR DESIGN (Left se nikalne wala menu) --- */
   .nav-links {
-    display: none; 
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
+    position: fixed; 
+    top: 0;
+    left: -100%; /* Shuru mein screen ke left side pe chupaa hua hai */
+    width: 280px; /* Sidebar ki chaurai */
+    height: 100vh; /* Poori screen ki height */
     background-color: #000428; 
     flex-direction: column;
-    padding: 20px 0;
-    text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 80px 30px; 
+    text-align: left; /* Text left align kar diya */
+    transition: left 0.4s ease; /* Slide in/out animation */
+    z-index: 2000; 
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5); /* Halki si shadow */
+    display: flex; /* Display flex hi rahega, bas left ki position change hogi */
   }
 
+  /* Jab JS active karega, toh left se nikal kar aayega */
   .nav-links.active {
-    display: flex; 
+    left: 0; 
+  }
+
+  /* List ke andari links ka design */
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    font-size: 16px; 
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Har link ke neechay line */
+  }
+
+  /* Close (X) button ka design */
+  .close-icon {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 45px; /* Bara sa X ka nishaan */
+    color: #f7df1e;
+    cursor: pointer;
   }
 }
