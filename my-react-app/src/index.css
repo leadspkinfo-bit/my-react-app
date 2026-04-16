@@ -1,0 +1,73 @@
+:root {
+  /* Colors for your Leadspk Design */
+  --bg-dark: #000428;
+  --accent-yellow: #f7df1e;
+  --text-main: #ffffff;
+  --text-dim: #cccccc;
+  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+  /* Typography */
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  background-color: var(--bg-dark);
+  
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: flex-start; /* Default center hata diya */
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden; /* Horizontal scroll block */
+}
+
+/* Sabse important fix yahan hai */
+#root {
+  width: 100%; /* Fix width (1126px) ko hata kar 100% kar diya */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left; /* Align default text to left */
+}
+
+/* Global resets for your components */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* Responsive adjustment */
+@media (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}

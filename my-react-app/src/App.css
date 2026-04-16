@@ -1,0 +1,49 @@
+/* Smooth Scrolling enable karein */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+  
+  /* ========================================================
+     MAGIC BACKGROUND (PDF MATCHING) 
+     Ye code peechy rays aur purple glowing lights banayega
+  ======================================================== */
+  background-color: #000428; /* Aapka Deep Blue Base */
+  background-image: 
+    /* 1. Upar Right side par Purple Glow */
+    radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
+    /* 2. Neeche Right side par Pinkish Glow */
+    radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
+    /* 3. Sunburst Rays (Kiranain) jo Left side se nikal rahi hain */
+    repeating-conic-gradient(
+      from 0deg at 20% 50%, 
+      rgba(255, 255, 255, 0.03) 0deg, 
+      rgba(255, 255, 255, 0.03) 2deg, 
+      transparent 2deg, 
+      transparent 4deg
+    );
+    
+  /* Background fix rahega jab aap scroll karenge */
+  background-attachment: fixed; 
+}
+
+/* Har section ko screen size ke mutabiq set karna */
+section {
+  padding: 100px 10%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Kisi bhi qisam ke slider dots ko hide karne ke liye */
+.dots-container, .slick-dots, .pagination, .swiper-pagination {
+  display: none !important;
+}

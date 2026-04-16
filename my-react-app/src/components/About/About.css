@@ -1,0 +1,110 @@
+.about-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 10%;
+  background-color: #000428;
+  background-image: 
+    radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
+    repeating-conic-gradient(
+      from 0deg at 20% 50%, 
+      rgba(255, 255, 255, 0.03) 0deg, 
+      rgba(255, 255, 255, 0.03) 2deg, 
+      transparent 2deg, 
+      transparent 4deg
+    );
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.about-container {
+  width: 100%;
+  max-width: 1300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.about-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.about-title-top {
+  color: white;
+  font-size: clamp(35px, 4vw, 50px);
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.about-title-bottom {
+  font-family: 'Permanent Marker', cursive;
+  color: #f7df1e;
+  font-size: clamp(60px, 8vw, 110px);
+  margin: -10px 0 20px 0;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-shadow: 2px 4px 10px rgba(0,0,0,0.3);
+}
+
+.about-desc {
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.7;
+  max-width: 500px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.highlight-yellow {
+  color: #f7df1e;
+  font-weight: 700;
+}
+
+.about-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  object-fit: contain;
+  /* Floating Animation */
+  animation: floatRocket 4s ease-in-out infinite;
+  filter: drop-shadow(0px 20px 40px rgba(0,0,0,0.5));
+}
+
+@keyframes floatRocket {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@media (max-width: 992px) {
+  .about-container {
+    flex-direction: column;
+  }
+  .about-left {
+    order: 2;
+  }
+  .about-right {
+    order: 1;
+    margin-bottom: 30px;
+  }
+  .about-img {
+    max-width: 400px;
+  }
+}

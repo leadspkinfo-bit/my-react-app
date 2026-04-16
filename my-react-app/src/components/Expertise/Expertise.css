@@ -1,0 +1,113 @@
+.expertise-section {
+  width: 100%;
+  padding: 100px 5%; 
+  
+  /* --- Magic Background --- */
+  background-color: #000428;
+  background-image: 
+    radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
+    repeating-conic-gradient(
+      from 0deg at 20% 50%, 
+      rgba(255, 255, 255, 0.03) 0deg, 
+      rgba(255, 255, 255, 0.03) 2deg, 
+      transparent 2deg, 
+      transparent 4deg
+    );
+  background-attachment: fixed;
+  
+  box-sizing: border-box;
+}
+
+.expertise-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(40px, 5vw, 65px);
+  color: #f7df1e; 
+  margin-bottom: 25px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+.expertise-desc {
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 70px auto;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* --- Grid 6 Columns --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 20px; 
+  align-items: start;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+}
+
+/* --- UPDATE: Border, Background aur Box sab khatam kar diya! --- */
+.icon-box {
+  width: 100%; 
+  max-width: 180px; 
+  aspect-ratio: 1 / 1; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  
+  /* Halka sa shadow rakha hai taake icon background se thora utha hua lagay */
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3)); 
+}
+
+.service-icon {
+  width: 100%; /* Picture ko full bara kar diya kyunke ab border nahi hai */
+  height: 100%;
+  object-fit: contain;
+}
+
+.service-name {
+  color: #ffffff;
+  font-size: clamp(11px, 1.1vw, 15px); 
+  font-weight: 500;
+  margin-top: 5px;
+  letter-spacing: 0.5px;
+}
+
+/* --- Responsive for Smaller Screens (Tablets / Mobiles) --- */
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 35px;
+  }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+  }
+  .icon-box {
+    max-width: 140px;
+  }
+}

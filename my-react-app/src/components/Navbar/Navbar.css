@@ -1,0 +1,115 @@
+.navbar {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%; 
+  
+  /* --- Magic Background --- */
+  background-color: #000428; 
+  background-image: 
+    radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
+    repeating-conic-gradient(
+      from 0deg at 20% 50%, 
+      rgba(255, 255, 255, 0.03) 0deg, 
+      rgba(255, 255, 255, 0.03) 2deg, 
+      transparent 2deg, 
+      transparent 4deg
+    );
+  background-attachment: fixed;
+  
+  backdrop-filter: blur(10px); 
+  z-index: 1000;
+  box-sizing: border-box;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+/* --- LOGO CONTAINER --- */
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container a {
+  display: flex;
+  text-decoration: none;
+}
+
+.navbar-logo-img {
+  /* Navbar ko chhere baghair pic ko bara karne ke liye scale use kiya hai */
+  height: auto; 
+  width: auto;  
+  max-height: 80px; 
+  max-width: 250px; 
+  object-fit: contain; 
+  /* --- ZOOM FIX --- */
+  transform: scale(1.5); 
+  transform-origin: left center; /* Taa ke logo left side se hi grow kare */
+  transition: transform 0.3s ease; 
+}
+
+.navbar-logo-img:hover {
+  transform: scale(1.6);
+}
+
+/* --- NAV LINKS --- */
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+  color: #f7df1e; 
+}
+
+/* --- CONTACT BUTTON --- */
+.contact-btn {
+  background: #f7df1e;
+  color: #000428;
+  padding: 10px 25px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.contact-btn:hover {
+  background: white;
+  transform: translateY(-2px);
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 992px) {
+  .navbar {
+    padding: 15px 5%;
+  }
+  
+  .navbar-logo-img {
+    max-height: 50px; 
+    transform: scale(1.2); /* Mobile pe thora kam zoom rakha hai */
+  }
+
+  .nav-links {
+    display: none; 
+  }
+}

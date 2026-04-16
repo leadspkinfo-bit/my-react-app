@@ -1,0 +1,182 @@
+.footer-section {
+  width: 100%;
+  padding: 80px 5%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+/* ================= LEFT SIDE (GLASS FORM) ================= */
+.footer-form-area {
+  flex: 1.2;
+}
+
+.form-title {
+  color: #f7df1e;
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  margin-left: 20px;
+}
+
+.glass-form-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  padding: 35px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-row {
+  display: flex;
+  gap: 15px;
+}
+
+.input-row input {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+}
+
+input, textarea {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 15px;
+  color: white;
+  font-size: 14px;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+input::placeholder, textarea::placeholder {
+  color: #cccccc;
+}
+
+/* ================= BUTTONS & FILE UPLOAD ================= */
+.form-actions-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 5px;
+}
+
+.file-upload-area {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.grey-pill-btn {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+  width: max-content;
+}
+
+.grey-pill-btn:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.file-limit-text {
+  color: #aaaaaa;
+  font-size: 11px;
+  margin-left: 10px;
+}
+
+.submit-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Custom Message Popup (Sending... / Sent!) */
+.status-popup {
+  color: #f7df1e;
+  font-size: 13px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 15px;
+  border-radius: 20px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ================= RIGHT SIDE (INFO & LINKS) ================= */
+.footer-info-area {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 60px; /* Form ke level par laane ke liye */
+}
+
+.info-column h3 {
+  font-size: 15px;
+  margin-bottom: 30px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.get-in-touch p {
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.yellow-icon {
+  color: #f7df1e;
+  font-size: 18px;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 992px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .input-row {
+    flex-direction: column;
+  }
+  .footer-info-area {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-top: 20px;
+  }
+}
