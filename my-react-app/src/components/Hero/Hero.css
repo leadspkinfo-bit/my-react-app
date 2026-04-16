@@ -33,6 +33,8 @@
 
 .hero-text-area {
   flex: 1; 
+  display: flex;
+  flex-direction: column;
 }
 
 .title-wrapper {
@@ -147,95 +149,82 @@
 .stat-item p { font-size: 12px; color: #ffffff; text-transform: uppercase; margin-top: 5px; }
 .stat-divider { width: 1px; height: 40px; background: rgba(255, 255, 255, 0.2); }
 
-/* --- MOBILE RESPONSIVE --- */
+/* --- MOBILE RESPONSIVE (EXACT SEQUENCE: TITLE -> PIC -> CONTENT) --- */
 @media (max-width: 992px) {
   .hero-section {
-    min-height: auto; 
-    /* --- YAHAN CHANGE KIYA HAI --- */
-    /* Padding top 140px se 190px kar di taake pura block thora neechay shift ho jaye */
-    padding: 190px 5% 40px 5%; 
-    height: auto;
+    min-height: 100vh;
+    padding: 210px 5% 60px 5%; /* Adjusted padding to move Digital further down */
+    display: block;
+    overflow-y: visible;
   }
 
   .hero-content {
-    flex-direction: row; 
+    display: flex;
+    flex-direction: column; 
     align-items: center;
-    justify-content: space-between;
-    gap: 15px; 
-    text-align: left;
+    gap: 0; 
   }
 
-  /* TEXT LEFT SIDE PAR */
+  /* 1. THINK DIGITAL (SAB SE UPAR) */
   .hero-text-area { 
-    order: 1; 
-    flex: 1.3; 
+    width: 100%;
+    order: 1; /* Force title at the top */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
-    margin-top: 50px; 
+    align-items: center;
   }
-
-  .title-wrapper { 
-    align-items: flex-start; 
-    margin: 0; 
-    text-align: left; 
-  }
-
-  .hero-think {
-    font-size: 14px; 
-    letter-spacing: 4px;
-  }
-  
+  .title-wrapper { align-items: center; text-align: center; }
+  .hero-think { font-size: 22px; letter-spacing: 5px; }
   .hero-title { 
-    transform: rotate(0); 
-    justify-content: flex-start; 
-    font-size: clamp(26px, 6vw, 45px); 
-    letter-spacing: 4px;
+    font-size: clamp(38px, 11vw, 65px); 
+    justify-content: center; 
+    transform: none; 
+    margin: 15px 0;
   }
-  
-  .hero-with { 
-    transform: translateX(0); 
-    align-self: flex-start; 
-    margin-top: 2px; 
-    font-size: 14px;
+  .hero-with { align-self: center; transform: none; font-size: 22px; }
+
+  /* 2. PICTURE (CENTER) - FORAN DIGITAL KE BAAD */
+  .hero-image-area {
+    order: 2; /* Force image after title */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0; /* Space between title and box */
   }
-  
+  .hero-front-img {
+    max-width: 250px;
+    width: 80%;
+    transform: none;
+  }
+
+  /* 3. CONTENT BOX (BOTTOM) - SAB SE AAKHIR MEIN */
+  .hero-scroll-content {
+    order: 3; /* Force glass box at the end */
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04); 
+    backdrop-filter: blur(10px); 
+    border-radius: 20px; 
+    padding: 25px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
+    margin-top: 10px;
+  }
+
   .hero-description {
-    text-align: left;
-    font-size: 12px;
-    margin-top: 15px;
-    line-height: 1.5;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-top: 0;
   }
 
   .hero-stats { 
-    justify-content: flex-start; 
-    gap: 15px; 
-    flex-wrap: wrap; 
-    margin-top: 20px;
+    justify-content: center; 
+    gap: 20px; 
+    margin-top: 25px;
+    flex-wrap: wrap;
   }
 
-  .stat-item h2 {
-    font-size: 20px; 
-  }
+  .stat-item h2 { font-size: 26px; }
   .stat-item p { font-size: 10px; }
-  .stat-divider { height: 25px; }
-
-  .bulb-span { margin: 0 -3px; }
-
-  /* PICTURE RIGHT SIDE PAR */
-  .hero-image-area {
-    order: 2;
-    flex: 1; 
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 60px; 
-    margin-bottom: 0;
-  }
-
-  .hero-front-img {
-    width: 100%; 
-    max-width: 250px; 
-    transform: none; 
-    object-fit: contain;
-  }
+  .stat-divider { width: 1px; height: 30px; }
 }
