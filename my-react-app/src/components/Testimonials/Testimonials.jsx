@@ -24,9 +24,7 @@ const Testimonials = () => {
       name: "Aura Fragrance", 
       text: "If you're looking for a company that can handle everything from high-end graphic design to backend web support, this is it. They’ve managed our digital presence for over a year, and the consistency is impressive. Whether it’s a quick marketing banner or a major site update, they deliver on time and with a level of professionalism that is hard to find. Highly recommended for any business scaling up.", 
       img: auraPic 
-    },
-    { id: 4, text: "Your feedback text goes here.", name: "Client Name", img: "" },
-    { id: 5, text: "Your feedback text goes here.", name: "Client Name", img: "" },
+    }
   ];
 
   return (
@@ -51,7 +49,6 @@ const Testimonials = () => {
                     <div style={{ background: '#333', width: '100%', height: '100%' }}></div>
                   )}
                 </div>
-                {/* Bottom quote div yahan se nikaal diya hai */}
               </div>
               
               <h4 className="client-name">{review.name}</h4>
