@@ -169,6 +169,8 @@
     justify-content: center;
     width: 100%;
     margin-bottom: 20px;
+    /* --- NAYA: Sirf pic ko neechay karne ke liye yahan padding add ki hai --- */
+    padding-top: 100px; 
   }
   
   .hero-front-img {
