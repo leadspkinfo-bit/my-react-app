@@ -4,7 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px 10% 40px 10%; 
+  /* --- FIX: Desktop par 180px padding wapas lagayi taake navbar ke neechay se start ho --- */
+  padding: 180px 10% 80px 10%; 
   box-sizing: border-box;
   background-color: #000428; 
   background-image: 
@@ -47,7 +48,7 @@
   font-size: 24px;       
   font-weight: 900;      
   letter-spacing: 6px;   
-  margin: 0 0 -5px 0;    
+  margin: 0 0 5px 0;    
   line-height: 1.2;
   text-transform: uppercase;
   display: block;
@@ -55,7 +56,7 @@
 
 .hero-title {
   font-family: 'Permanent Marker', cursive; 
-  font-size: clamp(50px, 8vw, 100px); 
+  font-size: clamp(50px, 8vw, 110px); 
   color: #f7df1e;
   line-height: 1;
   margin: 0;
@@ -99,7 +100,7 @@
   align-self: flex-end; 
   color: #ffffff;
   font-weight: 900;
-  margin-top: 0px; 
+  margin-top: 5px; 
   transform: translateX(-40px); 
 }
 
@@ -147,10 +148,10 @@
 .stat-item p { font-size: 12px; color: #ffffff; text-transform: uppercase; margin-top: 5px; }
 .stat-divider { width: 1px; height: 40px; background: rgba(255, 255, 255, 0.2); }
 
-/* --- MEGA-BOLD MOBILE PREVIEW --- */
+/* --- MOBILE PREVIEW --- */
 @media (max-width: 992px) {
   .hero-section {
-     padding: 60px 5% 40px 5%;
+     padding: 130px 5% 40px 5%; /* Mobile navbar safety gap */
      min-height: auto;
      height: auto;
   }
@@ -158,8 +159,8 @@
   .hero-content {
     flex-direction: column;
     text-align: center;
-    padding-top: 20px; 
-    gap: 40px; /* Thora gap barhaya taake baray size clean lagay */
+    padding-top: 0; 
+    gap: 40px; 
   }
   
   .hero-text-area { order: 2; width: 100%; }
@@ -169,13 +170,12 @@
     justify-content: center;
     width: 100%;
     margin-bottom: 20px;
-    /* --- NAYA: Sirf pic ko neechay karne ke liye yahan padding add ki hai --- */
-    padding-top: 100px; 
+    padding-top: 40px; /* Face safety gap */
   }
   
   .hero-front-img {
-    max-width: 450px; /* Pic ko bara kar diya */
-    width: 90%;
+    max-width: 300px; 
+    width: 85%;
   }
 
   .title-wrapper { 
@@ -185,23 +185,27 @@
     width: 100%;
   }
 
-  /* THINK ka size bara kiya */
   .hero-think { 
     font-size: clamp(20px, 6vw, 28px); 
     letter-spacing: 10px; 
     margin-bottom: 5px;
   }
 
-  /* DIGITAL ka size MEGA kar diya */
   .hero-title { 
     font-size: clamp(55px, 18vw, 95px); 
     transform: rotate(0); 
     justify-content: center;
-    line-height: 0.9;
+    line-height: 1;
     letter-spacing: 4px;
   }
 
-  /* WITH US ka size bara kiya */
+  /* Bulb height fix for mobile */
+  .title-bulb-img {
+    height: 45px !important; 
+    width: auto !important;
+    margin: 0 5px;
+  }
+
   .hero-with { 
     transform: translateX(0); 
     align-self: center; 
@@ -210,7 +214,6 @@
     letter-spacing: 8px;
   }
 
-  /* Description ko bara aur wazeh kiya */
   .hero-description {
     font-size: clamp(16px, 4vw, 18px);
     max-width: 95%;
@@ -218,7 +221,6 @@
     margin: 30px auto 0 auto;
   }
 
-  /* Stats ko bara kiya */
   .hero-stats { 
     justify-content: center; 
     gap: 25px; 
@@ -241,10 +243,5 @@
 
   .bulb-span { 
     margin: 0 -5px; 
-  }
-  
-  /* Bulb ka size bhi font ke hisab se bara hoga */
-  .title-bulb-img {
-    height: 1.1em;
   }
 }

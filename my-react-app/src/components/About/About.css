@@ -1,245 +1,132 @@
-.hero-section {
+/* ========================================= */
+/* ABOUT SECTION               */
+/* ========================================= */
+
+.about-section {
   width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* --- FIX 1: Desktop padding barha di taake Double Navbar se door rahay --- */
-  padding: 180px 10% 80px 10%; 
+  padding: 100px 10%;
   box-sizing: border-box;
-  background-color: #000428; 
-  background-image: 
-    radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
-    repeating-conic-gradient(
-      from 0deg at 20% 50%, 
-      rgba(255, 255, 255, 0.03) 0deg, 
-      rgba(255, 255, 255, 0.03) 2deg, 
-      transparent 2deg, 
-      transparent 4deg
-    );
-  background-attachment: fixed;
-  overflow: hidden;
+  background-color: transparent; /* Theme ke background ke sath blend hone ke liye */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.hero-content {
+.about-container {
   width: 100%;
-  max-width: 1300px; 
-  display: flex; 
+  max-width: 1300px;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 30px;
-  z-index: 2;
+  gap: 50px;
 }
 
-.hero-text-area {
-  flex: 1; 
-}
-
-.title-wrapper {
+/* --- LEFT SIDE (TEXT) --- */
+.about-left {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  width: fit-content;
-  text-align: left; 
+  text-align: left;
 }
 
-.hero-think {
+.about-title-top {
   color: #ffffff;
-  font-size: 24px;       
-  font-weight: 900;      
-  letter-spacing: 6px;   
-  margin: 0 0 5px 0; /* Gap theek kiya */
-  line-height: 1.2;
+  font-size: clamp(30px, 5vw, 50px);
+  font-weight: 800;
+  margin: 0 0 5px 0;
   text-transform: uppercase;
-  display: block;
+  letter-spacing: 3px;
 }
 
-.hero-title {
-  font-family: 'Permanent Marker', cursive; 
-  /* --- FIX 2: Desktop par size balance kiya taake over-zoom na ho --- */
-  font-size: clamp(60px, 8vw, 110px); 
+.about-title-bottom {
+  font-family: 'Permanent Marker', cursive;
   color: #f7df1e;
-  line-height: 1;
+  font-size: clamp(40px, 7vw, 80px);
   margin: 0;
-  font-weight: 400; 
-  letter-spacing: 8px; 
-  transform: rotate(-2deg); 
-  display: flex; 
-  align-items: center; 
+  line-height: 1;
   text-transform: uppercase;
+  letter-spacing: 5px;
   filter: drop-shadow(2px 4px 10px rgba(0,0,0,0.3));
 }
 
-.bulb-span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 -10px; 
-  position: relative;
-  z-index: 2;
-}
-
-.title-bulb-img {
-  height: 1em; 
-  width: auto;
-  object-fit: contain;
-  background: transparent !important;
-  mix-blend-mode: screen; 
-  filter: drop-shadow(0px 5px 15px rgba(247, 223, 30, 0.4));
-  animation: bulbFloat 3s ease-in-out infinite; 
-}
-
-@keyframes bulbFloat {
-  0% { transform: scale(1.35) translateY(-2px); }
-  50% { transform: scale(1.35) translateY(-8px); } 
-  100% { transform: scale(1.35) translateY(-2px); } 
-}
-
-.hero-with {
-  font-size: 24px;
-  letter-spacing: 6px;
-  align-self: flex-end; 
-  color: #ffffff;
-  font-weight: 900;
-  margin-top: 5px; /* Gap theek kiya */
-  transform: translateX(-40px); 
-}
-
-.hero-description {
-  margin-top: 40px;
+.about-desc {
+  color: #cccccc;
   font-size: 16px;
   line-height: 1.8;
-  color: #cccccc;
-  max-width: 500px;
+  margin-top: 25px;
+  max-width: 600px;
 }
 
-.hero-image-area {
-  flex: 1; 
+.highlight-yellow {
+  color: #f7df1e;
+  font-weight: 900;
+}
+
+/* --- RIGHT SIDE (IMAGE) --- */
+.about-right {
+  flex: 1;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: relative;
 }
 
-.hero-front-img {
-  width: 100%; 
-  max-width: 500px; 
+.about-img {
+  width: 100%;
+  max-width: 450px; /* Desktop par normal size */
   height: auto;
   object-fit: contain;
-  display: block;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  background: transparent !important;
-  mix-blend-mode: lighten; 
-  filter: brightness(1.1) drop-shadow(0px 15px 50px rgba(0,0,0,0.5));
+  filter: drop-shadow(0px 15px 40px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
 }
 
-.hero-front-img:hover {
-  transform: scale(1.04) translateY(-15px);
-  filter: brightness(1.2) drop-shadow(0px 25px 60px rgba(247, 223, 30, 0.2)); 
+.about-img:hover {
+  transform: translateY(-10px);
 }
 
-.hero-stats {
-  display: flex;
-  gap: 40px;
-  margin-top: 50px;
-}
-
-.stat-item h2 { font-size: 36px; color: #f7df1e; margin: 0; font-weight: 800; }
-.stat-item p { font-size: 12px; color: #ffffff; text-transform: uppercase; margin-top: 5px; }
-.stat-divider { width: 1px; height: 40px; background: rgba(255, 255, 255, 0.2); }
-
-/* --- MOBILE PREVIEW (Wahi perfect wala) --- */
+/* ========================================= */
+/* --- MOBILE RESPONSIVE --- */
+/* ========================================= */
 @media (max-width: 992px) {
-  .hero-section {
-     padding: 60px 5% 40px 5%;
-     min-height: auto;
-     height: auto;
+  .about-section {
+    padding: 80px 5%;
   }
-  
-  .hero-content {
+
+  .about-container {
     flex-direction: column;
     text-align: center;
-    padding-top: 20px; 
-    gap: 40px; 
+    gap: 40px;
   }
-  
-  .hero-text-area { order: 2; width: 100%; }
-  
-  .hero-image-area {
+
+  /* Text Upar Aayega */
+  .about-left {
     order: 1;
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 20px;
-    padding-top: 100px; 
-  }
-  
-  .hero-front-img {
-    max-width: 450px; 
-    width: 90%;
-  }
-
-  .title-wrapper { 
     align-items: center; 
-    margin: 0 auto; 
-    text-align: center; 
-    width: 100%;
+    text-align: center;
   }
 
-  .hero-think { 
-    font-size: clamp(20px, 6vw, 28px); 
-    letter-spacing: 10px; 
-    margin-bottom: 5px;
+  .about-title-top {
+    font-size: clamp(24px, 6vw, 35px);
   }
 
-  .hero-title { 
-    font-size: clamp(55px, 18vw, 95px); 
-    transform: rotate(0); 
+  .about-title-bottom {
+    font-size: clamp(35px, 12vw, 60px);
+  }
+
+  .about-desc {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+  }
+
+  /* Picture Neechay Aayegi aur CHOTI hogi */
+  .about-right {
+    order: 2;
     justify-content: center;
-    line-height: 0.9;
-    letter-spacing: 4px;
-  }
-
-  .hero-with { 
-    transform: translateX(0); 
-    align-self: center; 
-    margin-top: 10px; 
-    font-size: clamp(20px, 6vw, 28px);
-    letter-spacing: 8px;
-  }
-
-  .hero-description {
-    font-size: clamp(16px, 4vw, 18px);
-    max-width: 95%;
-    line-height: 1.6;
-    margin: 30px auto 0 auto;
-  }
-
-  .hero-stats { 
-    justify-content: center; 
-    gap: 25px; 
-    margin-top: 40px;
     width: 100%;
   }
 
-  .stat-item h2 { 
-    font-size: clamp(30px, 8vw, 40px); 
-  }
-
-  .stat-item p { 
-    font-size: 12px; 
-    letter-spacing: 1px;
-  }
-
-  .stat-divider { 
-    height: 40px; 
-  }
-
-  .bulb-span { 
-    margin: 0 -5px; 
-  }
-  
-  .title-bulb-img {
-    height: 1.1em;
+  .about-img {
+    max-width: 250px; /* FIX: Mobile par pic boht bari nahi hogi */
+    width: 80%;
   }
 }
