@@ -1,0 +1,102 @@
+.contact-section {
+  width: 100%;
+  min-height: 100vh;
+  padding: 160px 10% 40px 10%; 
+  box-sizing: border-box;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.contact-header { text-align: center; }
+.contact-main-title {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(35px, 6vw, 60px);
+  color: #ffffff;
+}
+.highlight-yellow { color: #f7df1e; }
+
+.info-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.info-card {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-circle { font-size: 24px; margin-bottom: 10px; }
+
+/* --- FORM AREA STYLING (Footer Style) --- */
+.contact-form-footer-area {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.glass-form {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(15px);
+  padding: 50px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-title {
+  color: #f7df1e;
+  font-size: 28px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.full-width { grid-column: span 2; }
+
+.glass-form input, .glass-form textarea {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: white;
+  outline: none;
+}
+
+.submit-btn {
+  margin-top: 25px;
+  width: 100%;
+  padding: 18px;
+  background: #f7df1e;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .full-width { grid-column: span 1; }
+  .glass-form { padding: 30px 20px; }
+}

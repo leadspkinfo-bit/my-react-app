@@ -1,39 +1,54 @@
-/* Smooth Scrolling enable karein */
+/* ========================================================
+   GLOBAL BACKGROUND - BULLETPROOF FIX
+======================================================== */
+
 html {
   scroll-behavior: smooth;
+  background-color: #000428; 
 }
 
+/* 1. SIRF BODY PAR BACKGROUND LAGEGA AUR LOCK HOGA */
 body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
   color: white;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   
-  /* ========================================================
-     MAGIC BACKGROUND (PDF MATCHING) 
-     Ye code peechy rays aur purple glowing lights banayega
-  ======================================================== */
-  background-color: #000428; /* Aapka Deep Blue Base */
+  background-color: #000428 !important;
   background-image: 
-    /* 1. Upar Right side par Purple Glow */
     radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
-    /* 2. Neeche Right side par Pinkish Glow */
     radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
-    /* 3. Sunburst Rays (Kiranain) jo Left side se nikal rahi hain */
     repeating-conic-gradient(
       from 0deg at 20% 50%, 
       rgba(255, 255, 255, 0.03) 0deg, 
       rgba(255, 255, 255, 0.03) 2deg, 
       transparent 2deg, 
       transparent 4deg
-    );
+    ) !important;
     
-  /* Background fix rahega jab aap scroll karenge */
-  background-attachment: fixed; 
+  /* YE 3 LINES LINE KO TOOTNE SE ROKAIN GI */
+  background-attachment: fixed !important; 
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
 }
 
-/* Har section ko screen size ke mutabiq set karna */
+/* 2. BAQI SAB KUCH ZABARDASTI TRANSPARENT (Taake koi cut na aaye) */
+#root, 
+.App, 
+section, 
+.contact-section, 
+.footer-section,
+footer {
+  background: transparent !important;
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+/* ======================================================== */
+/* GENERAL SECTION STYLING */
+/* ======================================================== */
 section {
   padding: 100px 10%;
   min-height: 100vh;
@@ -43,7 +58,7 @@ section {
   box-sizing: border-box;
 }
 
-/* Kisi bhi qisam ke slider dots ko hide karne ke liye */
+/* Dots Hider */
 .dots-container, .slick-dots, .pagination, .swiper-pagination {
   display: none !important;
 }

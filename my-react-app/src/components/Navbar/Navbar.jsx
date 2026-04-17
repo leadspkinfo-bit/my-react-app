@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // React Router import kiya
 import './Navbar.css';
 import logo from '../../assets/logo.png'; 
 
@@ -30,9 +31,10 @@ const Navbar = () => {
 
       <nav className="navbar">
         <div className="logo-container">
-          <a href="/">
+          {/* Logo par click karne se wapas Home par jayega */}
+          <Link to="/">
             <img src={logo} alt="Leads PK" className="navbar-logo-img" />
-          </a>
+          </Link>
         </div>
 
         {/* --- SIDEBAR MENU --- */}
@@ -44,13 +46,14 @@ const Navbar = () => {
           </div>
 
           {/* Links: onClick pe menu khud band ho jayega */}
-          <li><a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a></li>
-          <li><a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
-          <li><a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a></li>
-          <li><a href="#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
+          <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
+          <li><a href="/#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
+          <li><a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a></li>
+          <li><a href="/#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
         </ul>
 
-        <a href="#contact" className="contact-btn">Contact Us</a>
+        {/* --- FIX: Contact Us ab form wale naye page par le jayega --- */}
+        <Link to="/contact" className="contact-btn">Contact Us</Link>
       </nav>
       
     </header>
