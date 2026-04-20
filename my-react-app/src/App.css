@@ -33,7 +33,7 @@ section {
 }
 
 /* ========================================================
-   REVEAL ANIMATIONS (Luxury Slow: 1.5s)
+   REVEAL ANIMATIONS (Luxury Slow: 1.5s - DESKTOP)
 ======================================================== */
 .reveal {
   opacity: 0;
@@ -57,14 +57,20 @@ section {
 }
 
 /* ========================================================
-   MOBILE UNIVERSAL FIX (Saaray Sections K Liye)
+   MOBILE UNIVERSAL FIX (Left/Right Restored for Mobile)
 ======================================================== */
 @media (max-width: 992px) {
-  /* Mobile par side-slide (left/right) masla karti hai, 
-     isliye saari reveal classes ko "Bottom to Up" mein convert kar diya */
+  /* Distance thora kam rakha hai (40px) taake mobile par screen cut na ho */
+  .reveal-left {
+    transform: translateX(-40px) !important;
+  }
   
-  .reveal-left, .reveal-right, .reveal-up {
-    transform: translateY(50px) !important; /* X hataya taake conflict na aaye */
+  .reveal-right {
+    transform: translateX(40px) !important;
+  }
+
+  .reveal-up {
+    transform: translateY(40px) !important;
   }
 
   .reveal-zoom {
@@ -76,7 +82,7 @@ section {
     transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
-  /* YAHAN FIX HAI: Mobile k liye active state explicitly force ki hai taake atke nahi */
+  /* Mobile k liye active state reset */
   .reveal.active {
     opacity: 1 !important;
     filter: blur(0) !important;
