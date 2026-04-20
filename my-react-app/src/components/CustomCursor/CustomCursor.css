@@ -1,26 +1,48 @@
-/* Glowing Aura Trail Effect */
-.cursor-glow-aura {
+.cursor-wrapper {
   position: fixed;
-  width: 350px; /* Aap iska size chota bada kar sakte hain */
-  height: 350px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Bohat zaroori */
+  z-index: 9999;
+}
+
+/* Peeche wala Blurred Saya */
+.cursor-trail-blur {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(
+    circle, 
+    rgba(138, 43, 226, 0.15) 0%, /* Soft Purple */
+    rgba(247, 223, 30, 0.05) 50%, /* Soft Yellow */
+    transparent 80%
+  );
+  filter: blur(40px); /* Isey "Decent" banane k liye heavy blur */
   border-radius: 50%;
-  /* Center mein Yellow aur bahar Purple glow */
+  transform: translate(-50%, -50%);
+  will-change: left, top;
+}
+
+/* Mouse k bilkul sath wala halka glow */
+.cursor-main-glow {
+  position: fixed;
+  width: 40px;
+  height: 40px;
   background: radial-gradient(
     circle, 
     rgba(247, 223, 30, 0.2) 0%, 
-    rgba(138, 43, 226, 0.15) 35%, 
     transparent 70%
   );
-  filter: blur(40px); /* Isey aur smooth karne k liye blur */
+  filter: blur(10px);
+  border-radius: 50%;
   transform: translate(-50%, -50%);
-  pointer-events: none; /* Takay buttons click ho saken */
-  z-index: 9999;
-  will-change: left, top; /* Performance k liye */
 }
 
-/* Mobile par ye effect band kar dena chahiye */
+/* Mobile par isey band rakhein */
 @media (max-width: 992px) {
-  .cursor-glow-aura {
+  .cursor-wrapper {
     display: none !important;
   }
 }
