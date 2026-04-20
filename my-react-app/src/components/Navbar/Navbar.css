@@ -130,10 +130,15 @@
   user-select: none;
 }
 
-/* Desktop pe Close (X) button hide rakhna hai */
 .close-icon {
   display: none; 
 }
+
+/* Sidebar socials default (Desktop pe) chupay rahenge */
+.sidebar-socials {
+  display: none;
+}
+
 
 /* --- MOBILE RESPONSIVE (SIDEBAR MENU JADOO) --- */
 @media (max-width: 992px) {
@@ -146,11 +151,9 @@
     font-size: 38px; 
   }
 
-  .top-bar-right {
-    gap: 25px; 
-  }
-  .top-bar-right a {
-    font-size: 26px; 
+  /* === CHUPANE WALA KAAM: Desktop Wale Icons Hata Diye === */
+  .desktop-socials {
+    display: none !important;
   }
 
   .navbar {
@@ -167,29 +170,27 @@
     display: none; 
   }
 
-  /* --- SIDEBAR DESIGN (Left se nikalne wala menu) --- */
+  /* --- SIDEBAR DESIGN --- */
   .nav-links {
     position: fixed; 
     top: 0;
-    left: -100%; /* Shuru mein screen ke left side pe chupaa hua hai */
-    width: 280px; /* Sidebar ki chaurai */
-    height: 100vh; /* Poori screen ki height */
+    left: -100%; 
+    width: 280px; 
+    height: 100vh; 
     background-color: #000428; 
     flex-direction: column;
     padding: 80px 30px; 
-    text-align: left; /* Text left align kar diya */
-    transition: left 0.4s ease; /* Slide in/out animation */
+    text-align: left; 
+    transition: left 0.4s ease; 
     z-index: 2000; 
-    box-shadow: 5px 0 15px rgba(0,0,0,0.5); /* Halki si shadow */
-    display: flex; /* Display flex hi rahega, bas left ki position change hogi */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5); 
+    display: flex; 
   }
 
-  /* Jab JS active karega, toh left se nikal kar aayega */
   .nav-links.active {
     left: 0; 
   }
 
-  /* List ke andari links ka design */
   .nav-links li {
     width: 100%;
   }
@@ -198,17 +199,37 @@
     display: block;
     font-size: 16px; 
     padding: 15px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Har link ke neechay line */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
   }
 
-  /* Close (X) button ka design */
   .close-icon {
     display: block;
     position: absolute;
     top: 20px;
     right: 25px;
-    font-size: 45px; /* Bara sa X ka nishaan */
+    font-size: 45px; 
     color: #f7df1e;
     cursor: pointer;
+  }
+
+  /* === DIKHANE WALA KAAM: Sidebar k neechay chotay icons lagana === */
+  .sidebar-socials {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-top: auto; /* Flexbox ki wajah se isay bottom par push kar dega */
+    padding-bottom: 20px; /* Thori si space peechay chhori hai */
+  }
+
+  .sidebar-socials a {
+    font-size: 20px; /* Ye thore chotay premium size ke icons hain */
+    color: white;
+    border-bottom: none; /* Inke neechay border-line hata di */
+    padding: 0; 
+  }
+
+  .sidebar-socials a:hover {
+    color: #f7df1e; 
+    transform: scale(1.1);
   }
 }

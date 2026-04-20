@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // React Router import kiya
+import { Link } from 'react-router-dom'; 
 import './Navbar.css';
 import logo from '../../assets/logo.png'; 
 
@@ -20,7 +20,8 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="top-bar-right">
+        {/* Desktop wale Social Icons */}
+        <div className="top-bar-right desktop-socials">
           <a href="#"><i className="fab fa-whatsapp"></i></a>
           <a href="#"><i className="fab fa-instagram"></i></a>
           <a href="#"><i className="fab fa-tiktok"></i></a>
@@ -31,7 +32,6 @@ const Navbar = () => {
 
       <nav className="navbar">
         <div className="logo-container">
-          {/* Logo par click karne se wapas Home par jayega */}
           <Link to="/">
             <img src={logo} alt="Leads PK" className="navbar-logo-img" />
           </Link>
@@ -45,14 +45,21 @@ const Navbar = () => {
             &times;
           </div>
 
-          {/* Links: onClick pe menu khud band ho jayega */}
           <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
           <li><a href="/#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
           <li><a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a></li>
           <li><a href="/#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
+
+          {/* === NAYA ADDITION: Sidebar ke andar Mobile Social Icons === */}
+          <div className="sidebar-socials">
+            <a href="#"><i className="fab fa-whatsapp"></i></a>
+            <a href="#"><i className="fab fa-instagram"></i></a>
+            <a href="#"><i className="fab fa-tiktok"></i></a>
+            <a href="#"><i className="fab fa-youtube"></i></a>
+            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+          </div>
         </ul>
 
-        {/* --- FIX: Contact Us ab form wale naye page par le jayega --- */}
         <Link to="/contact" className="contact-btn">Contact Us</Link>
       </nav>
       
