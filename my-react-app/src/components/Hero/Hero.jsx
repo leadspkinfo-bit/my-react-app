@@ -58,7 +58,8 @@ const Hero = () => {
   }, [displayedText, isTyping, fullText]);
 
   return (
-    <section id="home" className="hero-section reveal">
+    /* Yahan maine "reveal-zoom" class add kar di hai */
+    <section id="home" className="hero-section reveal reveal-zoom">
       <div className="hero-content">
         
         <div className="hero-text-area">

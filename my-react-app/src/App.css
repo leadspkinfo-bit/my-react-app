@@ -36,7 +36,6 @@ body {
   background-color: transparent !important;
 }
 
-/* Section spacing optimized for better flow */
 section {
   padding: 80px 10%;
   min-height: 80vh;
@@ -51,18 +50,39 @@ section {
 }
 
 /* ======================================================== */
-/* PIXELPAIR STYLE REVEAL (Blur + Fade + Slide)             */
+/* PIXELPAIR STYLE REVEAL (Alternating Directions)          */
 /* ======================================================== */
+
 .reveal {
   opacity: 0;
-  filter: blur(15px); /* Professional decent blur */
-  transform: translateY(60px) scale(0.98); 
-  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
+  filter: blur(15px);
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
   will-change: transform, opacity, filter;
 }
 
+/* 1. Default / Up (Neechay se upar) */
+.reveal-up { 
+  transform: translateY(80px) scale(0.98); 
+}
+
+/* 2. Left (Baayen se daayen) */
+.reveal-left { 
+  transform: translateX(-100px) scale(0.98); 
+}
+
+/* 3. Right (Daayen se baayen) */
+.reveal-right { 
+  transform: translateX(100px) scale(0.98); 
+}
+
+/* 4. Zoom (Peeche se aage) */
+.reveal-zoom { 
+  transform: scale(0.7) translateY(20px); 
+}
+
+/* Active State - Jab scroll ho jaye (Sab ke liye common) */
 .reveal.active {
   opacity: 1;
   filter: blur(0); 
-  transform: translateY(0) scale(1); 
+  transform: translate(0, 0) scale(1); 
 }

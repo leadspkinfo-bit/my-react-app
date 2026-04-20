@@ -14,7 +14,7 @@ const About = () => {
   const part3 = ", we help businesses scale through innovative technology and strategic solutions. Having partnered with numerous companies, we have a proven track record of driving growth and transforming visions into high-impact market results.";
   const fullText = part1 + part2 + part3;
 
-  // Scroll Spy Logic (Jab paragraph screen par aaye tabhi typing shuru ho)
+  // Scroll Spy Logic
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -22,7 +22,7 @@ const About = () => {
           setIsTyping(true);
         }
       },
-      { threshold: 0.5 } // Jab 50% section dikh jaye tab trigger hoga
+      { threshold: 0.5 } 
     );
 
     if (textRef.current) {
@@ -39,7 +39,7 @@ const About = () => {
     if (isTyping && displayedText.length < fullText.length) {
       const timeoutId = setTimeout(() => {
         setDisplayedText(fullText.slice(0, displayedText.length + 1));
-      }, 15); // 15ms speed (fast and smooth)
+      }, 15); 
       
       return () => clearTimeout(timeoutId);
     }
@@ -56,14 +56,14 @@ const About = () => {
         {p1}
         {p2.length > 0 && <span className="highlight-yellow">{p2}</span>}
         {p3}
-        {/* Typewriter wala Blinking Cursor */}
         <span className="type-cursor">|</span> 
       </>
     );
   };
 
   return (
-    <section id="about" className="about-section reveal">
+    /* Yahan maine "reveal-zoom" add kar diya hai final impact ke liye */
+    <section id="about" className="about-section reveal reveal-zoom">
       <div className="about-container">
         
         {/* Left Side: Text Area */}

@@ -33,8 +33,8 @@ const Clients = () => {
   ];
 
   return (
-    // Section ID "clients" aur class "reveal" add kar di hai
-    <section id="clients" className="clients-section reveal">
+    /* Yahan maine "reveal-right" add kar diya hai balance ke liye */
+    <section id="clients" className="clients-section reveal reveal-right">
       <div className="clients-container">
         
         {/* Left Side Content */}

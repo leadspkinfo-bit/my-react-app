@@ -9,7 +9,7 @@ const Testimonials = () => {
   // Pop-up handle karne ke liye state
   const [selectedReview, setSelectedReview] = useState(null);
 
-  // 8 Cards ka data (Tasweerein abhi repeat ki hain, aap change kar lena)
+  // 8 Cards ka data
   const reviews = [
     { 
       id: 1, 
@@ -65,7 +65,8 @@ const Testimonials = () => {
   const doubledReviews = [...reviews, ...reviews];
 
   return (
-    <section id="testimonials" className="testimonials-section reveal">
+    /* Yahan maine "reveal-up" add kar diya hai flow ke mutabiq */
+    <section id="testimonials" className="testimonials-section reveal reveal-up">
       <div className="testimonials-container">
         <h1 className="testimonials-title">Testimonials</h1>
 

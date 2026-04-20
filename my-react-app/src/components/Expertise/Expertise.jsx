@@ -51,7 +51,8 @@ const Expertise = () => {
   ];
 
   return (
-    <section id="services" className="expertise-section reveal">
+    /* Yahan maine sirf "reveal-left" add kiya hai balance banane ke liye */
+    <section id="services" className="expertise-section reveal reveal-left">
       <div className="expertise-content">
         <h2 className="section-title">Our Core Expertise</h2>
         
