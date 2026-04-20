@@ -105,36 +105,35 @@
 .submit-btn:hover { background: #e0c818; }
 
 /* ========================================================
-   CUSTOM ANIMATION WITH FAST STAGGERING (Bohat Kam Delay)
+   CUSTOM ANIMATION WITH HARDWARE ACCELERATION
 ======================================================== */
-/* Desktop pe slide ka fasla bhi 80px se 50px kar diya */
 .contact-card-1 {
   transform: translate3d(0, 50px, 0); 
   transition-delay: 0s !important;
 }
 .contact-card-2 {
   transform: translate3d(0, 50px, 0); 
-  /* Delay bohat kam kar diya (sirf 0.08 second) */
   transition-delay: 0.08s !important; 
 }
 .contact-card-3 {
   transform: translate3d(0, 50px, 0); 
-  /* Delay 0.16 second */
   transition-delay: 0.16s !important; 
 }
 .contact-form-footer-area.reveal {
-  /* Form ka delay bhi kam kar ke 0.2s kar diya */
   transition-delay: 0.2s !important; 
 }
 
 /* ========================================================
-   MOBILE FIXES & ANIMATIONS
+   MOBILE FIXES & OVERLAP PREVENTION
 ======================================================== */
 @media (max-width: 992px) {
   
   .contact-section { 
-    padding: 140px 20px 40px 20px !important; 
+    /* Yahan padding barha di taake Navbar se door rahay */
+    padding: 180px 20px 40px 20px !important; 
     height: auto !important; 
+    min-height: 100vh !important;
+    /* Is se content hamesha upar se start hoga, center mein nahi phansay ga */
     justify-content: flex-start !important; 
     align-items: flex-start !important;
   }
@@ -148,20 +147,11 @@
     background: rgba(255, 255, 255, 0.08); 
   }
 
-  /* MOBILE PE CARDS KI ANIMATION (Fasla 40px se 20px kar diya taake jaldi aaye) */
-  .contact-card-1 {
-    transform: translate3d(-20px, 0, 0) !important; 
-  }
-  
-  .contact-card-2 {
-    transform: translate3d(20px, 0, 0) !important; 
-  }
-  
-  .contact-card-3 {
-    transform: translate3d(-20px, 0, 0) !important; 
-  }
+  /* MOBILE PE CARDS KI ANIMATION */
+  .contact-card-1 { transform: translate3d(-20px, 0, 0) !important; }
+  .contact-card-2 { transform: translate3d(20px, 0, 0) !important; }
+  .contact-card-3 { transform: translate3d(-20px, 0, 0) !important; }
 
-  /* Active hone par apni jagah par wapas */
   .reveal.active {
     transform: translate3d(0, 0, 0) scale(1) !important;
   }
