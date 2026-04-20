@@ -6,6 +6,7 @@ html, body {
   padding: 0;
   min-height: 100vh;
   background-color: #000428;
+  /* Theme ko body pe fixed kar diya taake poori site pe nazar aaye */
   background-image: 
     radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
@@ -20,10 +21,11 @@ html, body {
   background-size: cover;
   color: white;
   font-family: 'Poppins', sans-serif;
-  /* Horizontal scroll rokne ke liye - Cutting fix ka pehla step */
+  /* Horizontal scroll hamesha k liye band */
   overflow-x: hidden; 
 }
 
+/* Saare sections ko transparent rakha hai taake theme peeche se dikhe */
 section {
   width: 100%;
   background: transparent !important;
@@ -31,56 +33,53 @@ section {
 }
 
 /* ========================================================
-   REVEAL ANIMATIONS (Slowed Down to 1.5s)
+   REVEAL ANIMATIONS (Luxury Slow: 1.5s)
 ======================================================== */
 .reveal {
   opacity: 0;
   filter: blur(15px);
-  /* Time barha kar 1.5s kar diya taake animation smooth aur slow ho */
+  /* Luxury feel k liye 1.5s transition */
   transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity, filter;
 }
 
-/* 1. Default / Up */
-.reveal-up { 
-  transform: translateY(60px); 
-}
+/* Default state for different directions (Desktop) */
+.reveal-up { transform: translateY(80px); }
+.reveal-left { transform: translateX(-100px); }
+.reveal-right { transform: translateX(100px); }
+.reveal-zoom { transform: scale(0.7); transform-origin: center center; }
 
-/* 2. Left (Baayen se Daayen) */
-.reveal-left { 
-  transform: translateX(-100px); 
-}
-
-/* 3. Right (Daayen se Baayen - Hero ke liye) */
-.reveal-right { 
-  transform: translateX(120px); 
-}
-
-/* 4. Zoom */
-.reveal-zoom { 
-  transform: scale(0.7);
-  transform-origin: center center; 
-}
-
-/* Active State - Reset Everything */
+/* Active State - Jab element nazar aaye */
 .reveal.active {
   opacity: 1;
   filter: blur(0); 
-  transform: translate(0, 0) scale(1);
+  transform: translate(0, 0) scale(1) !important;
 }
 
 /* ========================================================
-   MOBILE CUTTING FIX (Responsive Overrides)
+   MOBILE UNIVERSAL FIX (Saaray Sections K Liye)
 ======================================================== */
 @media (max-width: 992px) {
-  /* Mobile pe side slide animations cut-off karti hain, 
-     isliye unhe upar aane wali animation mein badal diya */
-  .reveal-left, .reveal-right {
-    transform: translateX(0); /* Side move khatam */
-    transform: translateY(50px); /* Neeche se upar aayega */
+  /* Mobile par side-slide (left/right) masla karti hai, 
+     isliye saari reveal classes ko "Bottom to Up" mein convert kar diya */
+  
+  .reveal-left, .reveal-right, .reveal-up {
+    transform: translateY(50px) !important; /* X hataya taake conflict na aaye */
   }
 
   .reveal-zoom {
-    transform: scale(0.85); /* Mobile pe zoom thora kam taake screen pe poora aaye */
+    transform: scale(0.9) !important;
+  }
+
+  /* Mobile par thori si speed tez rakhi hai (1.2s) taake snappy lagay */
+  .reveal {
+    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  }
+
+  /* YAHAN FIX HAI: Mobile k liye active state explicitly force ki hai taake atke nahi */
+  .reveal.active {
+    opacity: 1 !important;
+    filter: blur(0) !important;
+    transform: translate(0, 0) scale(1) !important;
   }
 }

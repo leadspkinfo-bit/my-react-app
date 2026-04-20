@@ -23,28 +23,34 @@ const AppContent = () => {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
         
-        // Hero section (Right/Zoom) ke liye trigger foran hona chahiye
-        // Baaki sections ke liye 150px gap sahi hai
-        const isHero = reveals[i].classList.contains('reveal-right') || reveals[i].classList.contains('reveal-zoom');
-        const elementVisible = isHero ? -100 : 150; 
+        // --- MOBILE FIX YAHAN HAI ---
+        const isMobile = window.innerWidth < 992;
+        
+        const isImmediate = reveals[i].classList.contains('reveal-right') || 
+                            reveals[i].classList.contains('reveal-left') || 
+                            reveals[i].classList.contains('reveal-zoom');
+        
+        // Agar mobile hai toh visible gap sirf 50px rakho taake foran trigger ho
+        const elementVisible = isMobile ? 50 : (isImmediate ? -50 : 150); 
 
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
-          // remove("active") nahi kiya taake animation sirf aik dafa ho
         }
       }
     };
 
-    // Scroll event listener
+    // Scroll listener attach karna
     window.addEventListener("scroll", revealElements);
     
     // Page load triggers
-    revealElements(); // Foran check karein
-    const timer = setTimeout(revealElements, 150); // Thora delay CSS render k baad
+    revealElements(); 
+    const timer1 = setTimeout(revealElements, 100); 
+    const timer2 = setTimeout(revealElements, 500); 
 
     return () => {
       window.removeEventListener("scroll", revealElements);
-      clearTimeout(timer);
+      clearTimeout(timer1);
+      clearTimeout(timer2);
     };
   }, [location.pathname]);
 
