@@ -14,13 +14,11 @@ const Navbar = () => {
           <span className="contact-number">
             <i className="fas fa-phone-alt"></i> +92 300 1234567
           </span>
-          {/* Menu Icon (3 Lines) - Ispe click se menu khulega */}
           <div className="menu-icon" onClick={() => setIsMobileMenuOpen(true)}>
             &#9776; 
           </div>
         </div>
 
-        {/* Desktop wale Social Icons */}
         <div className="top-bar-right desktop-socials">
           <a href="#"><i className="fab fa-whatsapp"></i></a>
           <a href="#"><i className="fab fa-instagram"></i></a>
@@ -37,10 +35,8 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* --- SIDEBAR MENU --- */}
         <ul className={isMobileMenuOpen ? "nav-links active" : "nav-links"}>
           
-          {/* Close Icon (X) */}
           <div className="close-icon" onClick={() => setIsMobileMenuOpen(false)}>
             &times;
           </div>
@@ -49,8 +45,14 @@ const Navbar = () => {
           <li><a href="/#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
           <li><a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a></li>
           <li><a href="/#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
+          
+          {/* === NAYA ADDITION: Mobile wala Contact Us Button === */}
+          <li className="mobile-contact-li">
+            <Link to="/contact" className="mobile-contact-btn" onClick={() => setIsMobileMenuOpen(false)}>
+              Contact Us
+            </Link>
+          </li>
 
-          {/* === NAYA ADDITION: Sidebar ke andar Mobile Social Icons === */}
           <div className="sidebar-socials">
             <a href="#"><i className="fab fa-whatsapp"></i></a>
             <a href="#"><i className="fab fa-instagram"></i></a>
@@ -60,6 +62,7 @@ const Navbar = () => {
           </div>
         </ul>
 
+        {/* Desktop wala Contact Button */}
         <Link to="/contact" className="contact-btn">Contact Us</Link>
       </nav>
       

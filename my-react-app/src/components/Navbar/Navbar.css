@@ -212,6 +212,26 @@
     cursor: pointer;
   }
 
+  /* === MOBILE CONTACT BUTTON STYLING === */
+  .mobile-contact-li {
+    width: 100%;
+    margin-top: 20px; /* Thora gap diya upar wale links se */
+  }
+
+  .nav-links a.mobile-contact-btn {
+    display: inline-block;
+    background: #f7df1e; 
+    color: #000428 !important; 
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: none; /* Iske neechay white line nahi aayegi */
+    width: auto;
+  }
+
   /* === DIKHANE WALA KAAM: Sidebar k neechay chotay icons lagana === */
   .sidebar-socials {
     display: flex;
