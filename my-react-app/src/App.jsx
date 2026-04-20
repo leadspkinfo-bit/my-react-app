@@ -21,22 +21,25 @@ const AppContent = () => {
       for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 100; // Jab section 100px nazar aaye tab trigger ho
+        const elementVisible = 150; 
 
+        // Agar element screen par aa gaya hai
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
-        } else {
-          // Agar aap chahte hain k scroll up karne pe dobara blur ho jaye (Pixelpair jaisa)
-          // To ye line rehne dain, warna hata dain
-          reveals[i].classList.remove("active");
+          // remove("active") yahan se hata diya gaya hai taake effect bar bar na ho
         }
       }
     };
 
     window.addEventListener("scroll", revealElements);
-    revealElements(); 
+    
+    // Page load hone par thora delay de kar check karen taake initial elements active ho jayen
+    const timer = setTimeout(revealElements, 200); 
 
-    return () => window.removeEventListener("scroll", revealElements);
+    return () => {
+      window.removeEventListener("scroll", revealElements);
+      clearTimeout(timer);
+    };
   }, [location.pathname]);
 
   return (

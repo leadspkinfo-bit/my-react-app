@@ -36,9 +36,10 @@ body {
   background-color: transparent !important;
 }
 
+/* Section spacing optimized for better flow */
 section {
-  padding: 100px 10%;
-  min-height: 100vh;
+  padding: 80px 10%;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,14 +55,14 @@ section {
 /* ======================================================== */
 .reveal {
   opacity: 0;
-  filter: blur(20px); /* Pixelpair style blur */
-  transform: translateY(80px) scale(0.95); /* Neechay se thora chota hokay aaye */
-  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); /* Bohat smooth transition */
+  filter: blur(15px); /* Professional decent blur */
+  transform: translateY(60px) scale(0.98); 
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); 
   will-change: transform, opacity, filter;
 }
 
 .reveal.active {
   opacity: 1;
-  filter: blur(0); /* Blur khatam ho jaye */
-  transform: translateY(0) scale(1); /* Apni jagah aur size mein aa jaye */
+  filter: blur(0); 
+  transform: translateY(0) scale(1); 
 }

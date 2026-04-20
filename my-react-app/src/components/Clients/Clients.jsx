@@ -1,7 +1,7 @@
 import React from 'react';
 import './Clients.css';
 
-// Pehle wali 7 tasweerein
+// Tasweerein imports
 import mandiImg from '../../assets/mandi.png';
 import musafirronImg from '../../assets/musafiroon.png'; 
 import binazizImg from '../../assets/binaziz.png';
@@ -9,17 +9,11 @@ import alhadiImg from '../../assets/alhadi.png';
 import stateImg from '../../assets/state.png';
 import binImg from '../../assets/bin.png';
 import pakImg from '../../assets/pak.png';
-
-// Nayi 4 tasweerein
 import asiaImg from '../../assets/asia.png';
 import dawatImg from '../../assets/dawat.png';
 import learnImg from '../../assets/learn.png';
 import auraImg from '../../assets/aura.png';
-
-// Ye rahi aapki 12th Buraq wali tasweer
 import buraqImg from '../../assets/buraq.png';
-
-// Right side ke liye Team wali tasweer
 import teamImg from '../../assets/team.png'; 
 
 const Clients = () => {
@@ -35,11 +29,12 @@ const Clients = () => {
     { id: 9, img: dawatImg },
     { id: 10, img: learnImg },
     { id: 11, img: auraImg },
-    { id: 12, img: buraqImg }, // Khali slot ki jagah Buraq laga diya
+    { id: 12, img: buraqImg },
   ];
 
   return (
-    <section id="clients" className="clients-section">
+    // Section ID "clients" aur class "reveal" add kar di hai
+    <section id="clients" className="clients-section reveal">
       <div className="clients-container">
         
         {/* Left Side Content */}
