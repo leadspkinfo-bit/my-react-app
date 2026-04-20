@@ -19,12 +19,11 @@ const Navbar = () => {
           </div>
         </div>
 
+        {/* Desktop wale Social Icons - Sirf 3 bache hain real links k sath */}
         <div className="top-bar-right desktop-socials">
-          <a href="#"><i className="fab fa-whatsapp"></i></a>
-          <a href="#"><i className="fab fa-instagram"></i></a>
-          <a href="#"><i className="fab fa-tiktok"></i></a>
-          <a href="#"><i className="fab fa-youtube"></i></a>
-          <a href="#"><i className="fab fa-linkedin-in"></i></a>
+          <a href="https://www.facebook.com/Leadspktechnologies" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/leadspktechnologies/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+          <a href="https://wa.me/923356471866" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
         </div>
       </div>
 
@@ -44,21 +43,21 @@ const Navbar = () => {
           <li><Link to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link></li>
           <li><a href="/#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a></li>
           <li><a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a></li>
-          <li><a href="/#blog" onClick={() => setIsMobileMenuOpen(false)}>Blog</a></li>
           
-          {/* === NAYA ADDITION: Mobile wala Contact Us Button === */}
+          {/* Blog ko hata kar Case Study kar diya */}
+          <li><a href="/#case-study" onClick={() => setIsMobileMenuOpen(false)}>Case Study</a></li>
+          
           <li className="mobile-contact-li">
             <Link to="/contact" className="mobile-contact-btn" onClick={() => setIsMobileMenuOpen(false)}>
               Contact Us
             </Link>
           </li>
 
+          {/* Mobile wale Social Icons - Sirf 3 real links */}
           <div className="sidebar-socials">
-            <a href="#"><i className="fab fa-whatsapp"></i></a>
-            <a href="#"><i className="fab fa-instagram"></i></a>
-            <a href="#"><i className="fab fa-tiktok"></i></a>
-            <a href="#"><i className="fab fa-youtube"></i></a>
-            <a href="#"><i className="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/Leadspktechnologies" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/leadspktechnologies/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+            <a href="https://wa.me/923356471866" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
           </div>
         </ul>
 
