@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-
-// === NAYA JADOO YAHAN IMPORT KIYA HAI ===
 import CustomCursor from './components/CustomCursor/CustomCursor'; 
-
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import Expertise from './components/Expertise/Expertise';
@@ -18,23 +15,25 @@ const AppContent = () => {
   const location = useLocation();
   const showFooter = location.pathname !== '/contact';
 
-  // === KAMAL KI REVEAL ANIMATION LOGIC ===
   useEffect(() => {
     const revealElements = () => {
       const reveals = document.querySelectorAll(".reveal");
       for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 100; // 100px scroll karne par show ho jayega
+        const elementVisible = 100; // Jab section 100px nazar aaye tab trigger ho
 
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
+        } else {
+          // Agar aap chahte hain k scroll up karne pe dobara blur ho jaye (Pixelpair jaisa)
+          // To ye line rehne dain, warna hata dain
+          reveals[i].classList.remove("active");
         }
       }
     };
 
     window.addEventListener("scroll", revealElements);
-    // Ek dafa khud chala dain taake page load hote hi top wale elements dikh jayen
     revealElements(); 
 
     return () => window.removeEventListener("scroll", revealElements);
@@ -42,12 +41,8 @@ const AppContent = () => {
 
   return (
     <div className="App">
-      
-      {/* === GLOWING CURSOR YAHAN CALL KAR DIYA === */}
       <CustomCursor />
-
       <Navbar />
-      
       <Routes>
         <Route path="/" element={
           <>
@@ -60,7 +55,6 @@ const AppContent = () => {
         } />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-
       {showFooter && <Footer />}
     </div>
   );

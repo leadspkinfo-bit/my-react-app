@@ -7,7 +7,6 @@ html {
   background-color: #000428; 
 }
 
-/* 1. SIRF BODY PAR BACKGROUND LAGEGA AUR LOCK HOGA */
 body {
   margin: 0;
   padding: 0;
@@ -15,7 +14,6 @@ body {
   color: white;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
-  
   background-color: #000428 !important;
   background-image: 
     radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
@@ -27,28 +25,17 @@ body {
       transparent 2deg, 
       transparent 4deg
     ) !important;
-    
-  /* YE 3 LINES LINE KO TOOTNE SE ROKAIN GI */
   background-attachment: fixed !important; 
   background-size: cover !important;
   background-repeat: no-repeat !important;
 }
 
-/* 2. BAQI SAB KUCH ZABARDASTI TRANSPARENT (Taake koi cut na aaye) */
-#root, 
-.App, 
-section, 
-.contact-section, 
-.footer-section,
-footer {
+#root, .App, section, .contact-section, .footer-section, footer {
   background: transparent !important;
   background-image: none !important;
   background-color: transparent !important;
 }
 
-/* ======================================================== */
-/* GENERAL SECTION STYLING */
-/* ======================================================== */
 section {
   padding: 100px 10%;
   min-height: 100vh;
@@ -58,7 +45,23 @@ section {
   box-sizing: border-box;
 }
 
-/* Dots Hider */
 .dots-container, .slick-dots, .pagination, .swiper-pagination {
   display: none !important;
+}
+
+/* ======================================================== */
+/* PIXELPAIR STYLE REVEAL (Blur + Fade + Slide)             */
+/* ======================================================== */
+.reveal {
+  opacity: 0;
+  filter: blur(20px); /* Pixelpair style blur */
+  transform: translateY(80px) scale(0.95); /* Neechay se thora chota hokay aaye */
+  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); /* Bohat smooth transition */
+  will-change: transform, opacity, filter;
+}
+
+.reveal.active {
+  opacity: 1;
+  filter: blur(0); /* Blur khatam ho jaye */
+  transform: translateY(0) scale(1); /* Apni jagah aur size mein aa jaye */
 }
