@@ -16,43 +16,33 @@ const AppContent = () => {
   const showFooter = location.pathname !== '/contact';
 
   useEffect(() => {
-    const revealElements = () => {
-      const reveals = document.querySelectorAll(".reveal");
-      
-      for (let i = 0; i < reveals.length; i++) {
-        const windowHeight = window.innerHeight;
-        const elementTop = reveals[i].getBoundingClientRect().top;
-        
-        // --- MOBILE FIX YAHAN HAI ---
-        const isMobile = window.innerWidth < 992;
-        
-        const isImmediate = reveals[i].classList.contains('reveal-right') || 
-                            reveals[i].classList.contains('reveal-left') || 
-                            reveals[i].classList.contains('reveal-zoom');
-        
-        // Agar mobile hai toh visible gap sirf 50px rakho taake foran trigger ho
-        const elementVisible = isMobile ? 50 : (isImmediate ? -50 : 150); 
-
-        if (elementTop < windowHeight - elementVisible) {
-          reveals[i].classList.add("active");
-        }
-      }
-    };
-
-    // Scroll listener attach karna
-    window.addEventListener("scroll", revealElements);
+    const reveals = document.querySelectorAll(".reveal");
     
-    // Page load triggers
-    revealElements(); 
-    const timer1 = setTimeout(revealElements, 100); 
-    const timer2 = setTimeout(revealElements, 500); 
+    // YAHAN PERFORMANCE FIX HAI: Scroll Event ki jagah IntersectionObserver use kiya hai
+    // Ye browser ko hang nahi karta aur 60fps smooth scroll deta hai
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    }, {
+      rootMargin: "0px 0px -50px 0px", 
+      threshold: 0.1 
+    });
 
+    // Saare elements ko observe karna shuru karo
+    reveals.forEach((reveal) => {
+      observer.observe(reveal);
+    });
+
+    // Cleanup function taake memory leak na ho
     return () => {
-      window.removeEventListener("scroll", revealElements);
-      clearTimeout(timer1);
-      clearTimeout(timer2);
+      reveals.forEach((reveal) => {
+        observer.unobserve(reveal);
+      });
     };
-  }, [location.pathname]);
+  }, [location.pathname]); 
 
   return (
     <div className="App">

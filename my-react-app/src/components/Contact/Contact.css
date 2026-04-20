@@ -57,7 +57,7 @@
 
 .glass-form {
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(15px); /* Desktop par blur theek chalega */
+  backdrop-filter: blur(15px);
   padding: 50px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -105,10 +105,26 @@
 .submit-btn:hover { background: #e0c818; }
 
 /* ========================================================
-   CUSTOM ANIMATION FOR CARDS (Desktop = Up)
+   CUSTOM ANIMATION WITH FAST STAGGERING (Bohat Kam Delay)
 ======================================================== */
-.contact-card-1, .contact-card-2, .contact-card-3 {
-  transform: translateY(80px); 
+/* Desktop pe slide ka fasla bhi 80px se 50px kar diya */
+.contact-card-1 {
+  transform: translate3d(0, 50px, 0); 
+  transition-delay: 0s !important;
+}
+.contact-card-2 {
+  transform: translate3d(0, 50px, 0); 
+  /* Delay bohat kam kar diya (sirf 0.08 second) */
+  transition-delay: 0.08s !important; 
+}
+.contact-card-3 {
+  transform: translate3d(0, 50px, 0); 
+  /* Delay 0.16 second */
+  transition-delay: 0.16s !important; 
+}
+.contact-form-footer-area.reveal {
+  /* Form ka delay bhi kam kar ke 0.2s kar diya */
+  transition-delay: 0.2s !important; 
 }
 
 /* ========================================================
@@ -128,21 +144,25 @@
   
   .glass-form { 
     padding: 30px 20px; 
-    /* YAHAN PERFORMANCE FIX HAI: Mobile par heavy blur hata diya taake scroll lag na kare */
     backdrop-filter: none !important; 
-    background: rgba(255, 255, 255, 0.08); /* Bina blur ke bhi transparent premium look aayegi */
+    background: rgba(255, 255, 255, 0.08); 
   }
 
-  /* MOBILE PE CARDS KI ANIMATION (Left, Right, Left) */
+  /* MOBILE PE CARDS KI ANIMATION (Fasla 40px se 20px kar diya taake jaldi aaye) */
   .contact-card-1 {
-    transform: translateX(-40px) !important; 
+    transform: translate3d(-20px, 0, 0) !important; 
   }
   
   .contact-card-2 {
-    transform: translateX(40px) !important; 
+    transform: translate3d(20px, 0, 0) !important; 
   }
   
   .contact-card-3 {
-    transform: translateX(-40px) !important; 
+    transform: translate3d(-20px, 0, 0) !important; 
+  }
+
+  /* Active hone par apni jagah par wapas */
+  .reveal.active {
+    transform: translate3d(0, 0, 0) scale(1) !important;
   }
 }
