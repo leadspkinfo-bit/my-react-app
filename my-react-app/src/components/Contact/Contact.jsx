@@ -6,8 +6,8 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <div className="contact-container">
         
-        {/* Header aur Info Cards (Upar wala hissa) */}
-        <div className="contact-header">
+        {/* Header - Desktop & Mobile dono pe neeche se upar aayega */}
+        <div className="contact-header reveal reveal-up">
           <h1 className="contact-main-title">
             Let’s Connect & <span className="highlight-yellow">Grow Together</span>
           </h1>
@@ -16,22 +16,23 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* Info Cards - Custom classes di hain taake Desktop pe Up aur Mobile pe Left/Right hon */}
         <div className="info-cards-wrapper">
-          <div className="info-card">
+          <div className="info-card reveal contact-card-1">
             <div className="icon-circle">📍</div>
             <div className="info-text">
               <h3>Visit Our Hub</h3>
               <p><strong>Lahore, Pakistan</strong></p>
             </div>
           </div>
-          <div className="info-card">
+          <div className="info-card reveal contact-card-2">
             <div className="icon-circle">📞</div>
             <div className="info-text">
               <h3>Give Us a Call</h3>
               <p><strong>+92 335 6471866</strong></p>
             </div>
           </div>
-          <div className="info-card">
+          <div className="info-card reveal contact-card-3">
             <div className="icon-circle">✉️</div>
             <div className="info-text">
               <h3>Send an Email</h3>
@@ -40,8 +41,8 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* --- FORM AREA (Ab ye Footer ki jagah neechay hai) --- */}
-        <div className="contact-form-footer-area">
+        {/* --- FORM AREA --- */}
+        <div className="contact-form-footer-area reveal reveal-up">
           <form className="glass-form">
             <h2 className="form-title">What are you looking for?</h2>
             <div className="form-grid">

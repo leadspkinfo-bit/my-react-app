@@ -22,6 +22,12 @@
   font-size: clamp(35px, 6vw, 60px);
   color: #ffffff;
 }
+.contact-main-desc {
+  color: #cccccc;
+  max-width: 700px;
+  margin: 15px auto 0 auto;
+  line-height: 1.6;
+}
 .highlight-yellow { color: #f7df1e; }
 
 .info-cards-wrapper {
@@ -43,7 +49,7 @@
 
 .icon-circle { font-size: 24px; margin-bottom: 10px; }
 
-/* --- FORM AREA STYLING (Footer Style) --- */
+/* --- FORM AREA STYLING --- */
 .contact-form-footer-area {
   margin-top: 30px;
   width: 100%;
@@ -51,7 +57,7 @@
 
 .glass-form {
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); /* Desktop par blur theek chalega */
   padding: 50px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -80,6 +86,7 @@
   border-radius: 10px;
   color: white;
   outline: none;
+  box-sizing: border-box;
 }
 
 .submit-btn {
@@ -93,10 +100,49 @@
   border-radius: 10px;
   cursor: pointer;
   text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.submit-btn:hover { background: #e0c818; }
+
+/* ========================================================
+   CUSTOM ANIMATION FOR CARDS (Desktop = Up)
+======================================================== */
+.contact-card-1, .contact-card-2, .contact-card-3 {
+  transform: translateY(80px); 
 }
 
-@media (max-width: 768px) {
+/* ========================================================
+   MOBILE FIXES & ANIMATIONS
+======================================================== */
+@media (max-width: 992px) {
+  
+  .contact-section { 
+    padding: 140px 20px 40px 20px !important; 
+    height: auto !important; 
+    justify-content: flex-start !important; 
+    align-items: flex-start !important;
+  }
+
   .form-grid { grid-template-columns: 1fr; }
   .full-width { grid-column: span 1; }
-  .glass-form { padding: 30px 20px; }
+  
+  .glass-form { 
+    padding: 30px 20px; 
+    /* YAHAN PERFORMANCE FIX HAI: Mobile par heavy blur hata diya taake scroll lag na kare */
+    backdrop-filter: none !important; 
+    background: rgba(255, 255, 255, 0.08); /* Bina blur ke bhi transparent premium look aayegi */
+  }
+
+  /* MOBILE PE CARDS KI ANIMATION (Left, Right, Left) */
+  .contact-card-1 {
+    transform: translateX(-40px) !important; 
+  }
+  
+  .contact-card-2 {
+    transform: translateX(40px) !important; 
+  }
+  
+  .contact-card-3 {
+    transform: translateX(-40px) !important; 
+  }
 }
