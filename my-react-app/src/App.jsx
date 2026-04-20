@@ -18,23 +18,29 @@ const AppContent = () => {
   useEffect(() => {
     const revealElements = () => {
       const reveals = document.querySelectorAll(".reveal");
+      
       for (let i = 0; i < reveals.length; i++) {
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
-        const elementVisible = 150; 
+        
+        // Hero section (Right/Zoom) ke liye trigger foran hona chahiye
+        // Baaki sections ke liye 150px gap sahi hai
+        const isHero = reveals[i].classList.contains('reveal-right') || reveals[i].classList.contains('reveal-zoom');
+        const elementVisible = isHero ? -100 : 150; 
 
-        // Agar element screen par aa gaya hai
         if (elementTop < windowHeight - elementVisible) {
           reveals[i].classList.add("active");
-          // remove("active") yahan se hata diya gaya hai taake effect bar bar na ho
+          // remove("active") nahi kiya taake animation sirf aik dafa ho
         }
       }
     };
 
+    // Scroll event listener
     window.addEventListener("scroll", revealElements);
     
-    // Page load hone par thora delay de kar check karen taake initial elements active ho jayen
-    const timer = setTimeout(revealElements, 200); 
+    // Page load triggers
+    revealElements(); // Foran check karein
+    const timer = setTimeout(revealElements, 150); // Thora delay CSS render k baad
 
     return () => {
       window.removeEventListener("scroll", revealElements);

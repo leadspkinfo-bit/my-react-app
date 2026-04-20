@@ -1,20 +1,12 @@
 /* ========================================================
-   GLOBAL BACKGROUND - BULLETPROOF FIX
+   GLOBAL THEME - POORI WEBSITE PE LAGAYE GA
 ======================================================== */
-
-html {
-  scroll-behavior: smooth;
-  background-color: #000428; 
-}
-
-body {
+html, body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
-  background-color: #000428 !important;
+  background-color: #000428;
+  /* Theme ko body pe fixed kar diya taake poori site pe nazar aaye */
   background-image: 
     radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
@@ -24,65 +16,56 @@ body {
       rgba(255, 255, 255, 0.03) 2deg, 
       transparent 2deg, 
       transparent 4deg
-    ) !important;
-  background-attachment: fixed !important; 
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
+    );
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  /* Horizontal scroll rokne ke liye slide animation ke waqt */
+  overflow-x: hidden; 
 }
 
-#root, .App, section, .contact-section, .footer-section, footer {
-  background: transparent !important;
-  background-image: none !important;
-  background-color: transparent !important;
-}
-
+/* Saare sections ko transparent rakha hai taake theme peeche se dikhe */
 section {
-  padding: 80px 10%;
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
+  background: transparent !important;
   box-sizing: border-box;
 }
 
-.dots-container, .slick-dots, .pagination, .swiper-pagination {
-  display: none !important;
-}
-
-/* ======================================================== */
-/* PIXELPAIR STYLE REVEAL (Alternating Directions)          */
-/* ======================================================== */
-
+/* ========================================================
+   REVEAL ANIMATIONS (One-Time Only)
+======================================================== */
 .reveal {
   opacity: 0;
   filter: blur(15px);
-  transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity, filter;
 }
 
-/* 1. Default / Up (Neechay se upar) */
+/* 1. Default / Up */
 .reveal-up { 
-  transform: translateY(80px) scale(0.98); 
+  transform: translateY(60px); 
 }
 
-/* 2. Left (Baayen se daayen) */
+/* 2. Left (Baayen se Daayen) */
 .reveal-left { 
-  transform: translateX(-100px) scale(0.98); 
+  transform: translateX(-100px); 
 }
 
-/* 3. Right (Daayen se baayen) */
+/* 3. Right (Daayen se Baayen - Hero ke liye) */
 .reveal-right { 
-  transform: translateX(100px) scale(0.98); 
+  transform: translateX(120px); 
 }
 
-/* 4. Zoom (Peeche se aage) */
+/* 4. Zoom (Peeche se Aage) */
 .reveal-zoom { 
-  transform: scale(0.7) translateY(20px); 
+  transform: scale(0.7);
+  transform-origin: center center; 
 }
 
-/* Active State - Jab scroll ho jaye (Sab ke liye common) */
+/* Active State - Sab ke liye common (Reset transform) */
 .reveal.active {
   opacity: 1;
   filter: blur(0); 
-  transform: translate(0, 0) scale(1); 
+  transform: translate(0, 0) scale(1);
 }
