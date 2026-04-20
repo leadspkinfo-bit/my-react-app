@@ -3,19 +3,7 @@
   padding: 100px 5%; 
   
   /* --- Magic Background --- */
-  background-color: #000428;
-  background-image: 
-    radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
-    radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
-    repeating-conic-gradient(
-      from 0deg at 20% 50%, 
-      rgba(255, 255, 255, 0.03) 0deg, 
-      rgba(255, 255, 255, 0.03) 2deg, 
-      transparent 2deg, 
-      transparent 4deg
-    );
-  background-attachment: fixed;
-  
+  background-color: transparent; /* Global root wala apply ho raha hai waise b */
   box-sizing: border-box;
 }
 
@@ -42,6 +30,21 @@
   margin: 0 auto 70px auto;
   opacity: 0.9;
   font-weight: 400;
+  min-height: 80px; /* Taki text type hote waqt grid neechay jump na kare */
+}
+
+/* === TYPEWRITER CURSOR BLINK === */
+.type-cursor {
+  font-weight: bold;
+  color: #f7df1e;
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 /* --- Grid 6 Columns --- */
@@ -97,6 +100,10 @@
     grid-template-columns: repeat(3, 1fr); 
     gap: 30px;
   }
+  .expertise-desc {
+    min-height: 120px; /* Mobile par line zyada break hoti hain */
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -109,5 +116,8 @@
   }
   .icon-box {
     max-width: 140px;
+  }
+  .expertise-desc {
+    min-height: 140px;
   }
 }

@@ -80,7 +80,7 @@ const Navbar = () => {
 
           {/* About ab Case Study se bilkul pehle hai */}
           <li className={activeSection === 'about' ? 'active' : ''}>
-            <a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About LeadsPk</a>
+            <a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
           </li>
           
           <li className={activeSection === 'case-study' ? 'active' : ''}>

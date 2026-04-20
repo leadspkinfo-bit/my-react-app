@@ -110,6 +110,21 @@
   line-height: 1.8;
   color: #cccccc;
   max-width: 500px;
+  min-height: 140px; /* Taki typing k doran neechay wale stats jump na karain */
+}
+
+/* === TYPEWRITER CURSOR BLINK === */
+.type-cursor {
+  font-weight: bold;
+  color: #f7df1e;
+  animation: blink 0.7s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .hero-image-area {
@@ -219,6 +234,7 @@
     max-width: 95%;
     line-height: 1.6;
     margin: 30px auto 0 auto;
+    min-height: 200px; /* Mobile par line lambi hoti hai, stat jump rokne k liye bari height */
   }
 
   .hero-stats { 

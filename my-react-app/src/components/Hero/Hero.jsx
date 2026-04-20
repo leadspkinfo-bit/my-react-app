@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Hero.css';
 import frontImg from '../../assets/front.png'; 
 import bulbImg from '../../assets/bulb.png'; 
@@ -25,8 +25,40 @@ const Counter = ({ end, duration }) => {
 };
 
 const Hero = () => {
+  // === TYPEWRITER LOGIC STATES ===
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const textRef = useRef(null);
+
+  const fullText = "We don't just market your brand — we build it from the ground up. From stunning websites and eye-catching graphic design to high-quality video editing and result-driven digital marketing, we help you stand out, attract the right audience, and turn ideas into real growth. Your vision, our strategy — let's create something powerful.";
+
+  // Scroll aane par trigger karne wala Logic
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !isTyping && displayedText.length === 0) {
+          setIsTyping(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (textRef.current) observer.observe(textRef.current);
+    return () => { if (textRef.current) observer.unobserve(textRef.current); };
+  }, [isTyping, displayedText.length]);
+
+  // Typing Speed Logic (15ms per character)
+  useEffect(() => {
+    if (isTyping && displayedText.length < fullText.length) {
+      const timeoutId = setTimeout(() => {
+        setDisplayedText(fullText.slice(0, displayedText.length + 1));
+      }, 15);
+      return () => clearTimeout(timeoutId);
+    }
+  }, [displayedText, isTyping, fullText]);
+
   return (
-    <section id="home" className="hero-section">
+    <section id="home" className="hero-section reveal">
       <div className="hero-content">
         
         <div className="hero-text-area">
@@ -44,16 +76,13 @@ const Hero = () => {
             <h3 className="hero-with">WITH US</h3>
           </div>
 
-          {/* --- NAYA MAGIC BOX (Mobile par ye scroll hoga) --- */}
           <div className="hero-scroll-content">
-            <p className="hero-description">
-              We don't just market your brand — we build it from the ground up. 
-              From stunning websites and eye-catching graphic design to 
-              high-quality video editing and result-driven digital marketing, 
-              we help you stand out, attract the right audience, and turn 
-              ideas into real growth. Your vision, our strategy — let's create 
-              something powerful.
+            {/* Typewriter Paragraph */}
+            <p className="hero-description" ref={textRef}>
+              {displayedText}
+              <span className="type-cursor">|</span>
             </p>
+            
             <div className="hero-stats">
               <div className="stat-item">
                 <h2><Counter end={50} duration={2000} />+</h2>
@@ -71,7 +100,6 @@ const Hero = () => {
               </div>
             </div>
           </div>
-          {/* ----------------------------------------------- */}
 
         </div>
 
