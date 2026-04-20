@@ -53,7 +53,6 @@ const Hero = () => {
 
   return (
     <section id="home" className="hero-section">
-      {/* Reveal-right class yahan laga di gayi hai */}
       <div className="hero-content reveal reveal-right">
         <div className="hero-text-area">
           <div className="title-wrapper">

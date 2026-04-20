@@ -6,7 +6,6 @@
   justify-content: center;
   padding: 180px 10% 80px 10%; 
   position: relative;
-  /* Horizontal scroll rokne ke liye */
   overflow: hidden; 
 }
 
@@ -49,9 +48,10 @@
 /* --- MOBILE PREVIEW (FIXED) --- */
 @media (max-width: 992px) {
   .hero-section { 
-    padding: 120px 20px 40px 20px; /* Side padding kam kar di taake content cut na ho */
+    padding: 160px 20px 40px 20px; 
     height: auto; 
     min-height: 100vh;
+    align-items: flex-start; 
   }
   
   .hero-content { 
@@ -60,35 +60,35 @@
     gap: 20px; 
   }
 
-  /* Mobile par Right to Left animation aksar cut-off karti hai, isliye hum isay bottom se up karenge sirf mobile k liye */
-  .hero-content.reveal-right {
-    transform: translateY(50px) !important; 
-    transform: translateX(0) !important;
-  }
-  
-  .hero-content.reveal-right.active {
-    transform: translateY(0) !important;
-  }
-
   .hero-text-area { order: 2; width: 100%; }
+  
   .hero-image-area { 
     order: 1; 
     justify-content: center; 
-    padding-top: 20px;
+    /* YAHAN FIX HAI: Margin top de diya taake image neechay aye aur sar na cutay */
+    margin-top: 40px; 
+    padding-top: 0;
     width: 100%;
   }
 
   .hero-front-img { max-width: 280px; width: 90%; }
+  
   .title-wrapper { align-items: center; margin: 0 auto; }
   .hero-title { justify-content: center; transform: rotate(0); font-size: clamp(45px, 12vw, 70px); }
   .hero-think, .hero-with { font-size: 18px; letter-spacing: 4px; }
   .hero-with { transform: translateX(0); align-self: center; }
-  .hero-description { font-size: 14px; max-width: 100%; min-height: auto; margin-top: 20px; }
+  
+  .hero-description { 
+    font-size: 14px; 
+    max-width: 100%; 
+    min-height: 300px; 
+    margin-top: 20px; 
+  }
   
   .hero-stats { 
     justify-content: center; 
     gap: 15px; 
-    margin-top: 30px; 
+    margin-top: 10px; 
     flex-wrap: wrap; 
   }
   .stat-item h2 { font-size: 28px; }
