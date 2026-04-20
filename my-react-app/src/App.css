@@ -6,7 +6,6 @@ html, body {
   padding: 0;
   min-height: 100vh;
   background-color: #000428;
-  /* Theme ko body pe fixed kar diya taake poori site pe nazar aaye */
   background-image: 
     radial-gradient(circle at 85% 20%, rgba(138, 43, 226, 0.25) 0%, transparent 40%),
     radial-gradient(circle at 90% 80%, rgba(216, 58, 255, 0.15) 0%, transparent 50%),
@@ -21,11 +20,10 @@ html, body {
   background-size: cover;
   color: white;
   font-family: 'Poppins', sans-serif;
-  /* Horizontal scroll rokne ke liye slide animation ke waqt */
+  /* Horizontal scroll rokne ke liye - Cutting fix ka pehla step */
   overflow-x: hidden; 
 }
 
-/* Saare sections ko transparent rakha hai taake theme peeche se dikhe */
 section {
   width: 100%;
   background: transparent !important;
@@ -33,12 +31,13 @@ section {
 }
 
 /* ========================================================
-   REVEAL ANIMATIONS (One-Time Only)
+   REVEAL ANIMATIONS (Slowed Down to 1.5s)
 ======================================================== */
 .reveal {
   opacity: 0;
   filter: blur(15px);
-  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  /* Time barha kar 1.5s kar diya taake animation smooth aur slow ho */
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity, filter;
 }
 
@@ -57,15 +56,31 @@ section {
   transform: translateX(120px); 
 }
 
-/* 4. Zoom (Peeche se Aage) */
+/* 4. Zoom */
 .reveal-zoom { 
   transform: scale(0.7);
   transform-origin: center center; 
 }
 
-/* Active State - Sab ke liye common (Reset transform) */
+/* Active State - Reset Everything */
 .reveal.active {
   opacity: 1;
   filter: blur(0); 
   transform: translate(0, 0) scale(1);
+}
+
+/* ========================================================
+   MOBILE CUTTING FIX (Responsive Overrides)
+======================================================== */
+@media (max-width: 992px) {
+  /* Mobile pe side slide animations cut-off karti hain, 
+     isliye unhe upar aane wali animation mein badal diya */
+  .reveal-left, .reveal-right {
+    transform: translateX(0); /* Side move khatam */
+    transform: translateY(50px); /* Neeche se upar aayega */
+  }
+
+  .reveal-zoom {
+    transform: scale(0.85); /* Mobile pe zoom thora kam taake screen pe poora aaye */
+  }
 }
