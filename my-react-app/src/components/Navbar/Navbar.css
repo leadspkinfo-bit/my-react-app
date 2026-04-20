@@ -89,7 +89,7 @@
 
 .nav-links {
   display: flex;
-  gap: 30px;
+  gap: 20px; /* Thora sa gap kam kiya hai taake naye links fit aa jayen */
   list-style: none;
   margin: 0;
   padding: 0;
@@ -103,10 +103,6 @@
   text-transform: uppercase;
   transition: 0.3s ease;
   letter-spacing: 1px;
-}
-
-.nav-links a:hover {
-  color: #f7df1e; 
 }
 
 .contact-btn {
@@ -134,31 +130,57 @@
   display: none; 
 }
 
-/* Sidebar socials default (Desktop pe) chupay rahenge */
-.sidebar-socials {
+.sidebar-socials, .mobile-contact-li {
   display: none;
 }
 
-
-/* --- MOBILE RESPONSIVE (SIDEBAR MENU JADOO) --- */
-@media (max-width: 992px) {
-  .top-bar {
-    padding: 15px 5%;
+/* === ACTIVE LINK YELLOW LINE (Desktop k liye) === */
+@media (min-width: 993px) {
+  .nav-links li {
+    position: relative;
+    padding-bottom: 5px; 
   }
   
-  .menu-icon {
-    display: block; 
-    font-size: 38px; 
+  .nav-links li.active > a {
+    color: #f7df1e;
   }
 
-  /* === CHUPANE WALA KAAM: Desktop Wale Icons Hata Diye === */
-  .desktop-socials {
-    display: none !important;
+  .nav-links li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #f7df1e;
+    transition: width 0.3s ease-in-out;
   }
 
-  .navbar {
-    padding: 15px 5%; 
+  .nav-links li.active::after {
+    width: 100%; 
   }
+  
+  .nav-links li:hover::after {
+    width: 100%;
+  }
+}
+
+/* --- MOBILE RESPONSIVE --- */
+@media (max-width: 1150px) {
+  /* Agar screen thori choti ho to gap aur font thora adjust ho */
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-links a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 992px) {
+  .top-bar { padding: 15px 5%; }
+  .menu-icon { display: block; font-size: 38px; }
+  .desktop-socials { display: none !important; }
+  .navbar { padding: 15px 5%; }
   
   .navbar-logo-img {
     max-height: 70px; 
@@ -166,17 +188,12 @@
     transform-origin: left center;
   }
 
-  .contact-number, .contact-btn {
-    display: none; 
-  }
+  .contact-number, .contact-btn { display: none; }
 
-  /* --- SIDEBAR DESIGN --- */
   .nav-links {
     position: fixed; 
-    top: 0;
-    left: -100%; 
-    width: 280px; 
-    height: 100vh; 
+    top: 0; left: -100%; 
+    width: 280px; height: 100vh; 
     background-color: #000428; 
     flex-direction: column;
     padding: 80px 30px; 
@@ -187,13 +204,8 @@
     display: flex; 
   }
 
-  .nav-links.active {
-    left: 0; 
-  }
-
-  .nav-links li {
-    width: 100%;
-  }
+  .nav-links.active { left: 0; }
+  .nav-links li { width: 100%; }
 
   .nav-links a {
     display: block;
@@ -205,18 +217,13 @@
   .close-icon {
     display: block;
     position: absolute;
-    top: 20px;
-    right: 25px;
+    top: 20px; right: 25px;
     font-size: 45px; 
     color: #f7df1e;
     cursor: pointer;
   }
 
-  /* === MOBILE CONTACT BUTTON STYLING === */
-  .mobile-contact-li {
-    width: 100%;
-    margin-top: 20px; /* Thora gap diya upar wale links se */
-  }
+  .mobile-contact-li { display: block; width: 100%; margin-top: 20px; }
 
   .nav-links a.mobile-contact-btn {
     display: inline-block;
@@ -228,28 +235,26 @@
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border-bottom: none; /* Iske neechay white line nahi aayegi */
+    border-bottom: none; 
     width: auto;
   }
 
-  /* === DIKHANE WALA KAAM: Sidebar k neechay chotay icons lagana === */
   .sidebar-socials {
-    display: flex;
-    justify-content: flex-start;
-    gap: 20px;
-    margin-top: auto; /* Flexbox ki wajah se isay bottom par push kar dega */
-    padding-bottom: 20px; /* Thori si space peechay chhori hai */
+    display: flex; justify-content: flex-start;
+    gap: 20px; margin-top: auto; padding-bottom: 20px; 
   }
 
   .sidebar-socials a {
-    font-size: 20px; /* Ye thore chotay premium size ke icons hain */
-    color: white;
-    border-bottom: none; /* Inke neechay border-line hata di */
-    padding: 0; 
+    font-size: 20px; color: white;
+    border-bottom: none; padding: 0; 
   }
 
-  .sidebar-socials a:hover {
-    color: #f7df1e; 
-    transform: scale(1.1);
+  .sidebar-socials a:hover { color: #f7df1e; transform: scale(1.1); }
+
+  /* === MOBILE MENU ACTIVE STYLE === */
+  .nav-links li.active > a {
+    color: #f7df1e;
+    border-left: 3px solid #f7df1e;
+    padding-left: 15px;
   }
 }
