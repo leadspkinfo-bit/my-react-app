@@ -33,7 +33,7 @@ const Navbar = () => {
       <div className="top-bar">
         <div className="top-bar-left">
           <span className="contact-number">
-            <i className="fas fa-phone-alt"></i> +92 300 1234567
+            <i className="fas fa-phone-alt"></i>  +92 335 6471866
           </span>
           <div className="menu-icon" onClick={() => setIsMobileMenuOpen(true)}>
             &#9776; 
