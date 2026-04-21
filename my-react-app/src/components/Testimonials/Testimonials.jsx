@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Testimonials.css';
 
 import asiaPic from '../../assets/asia.png';
@@ -6,10 +6,24 @@ import learnPic from '../../assets/learn.png';
 import auraPic from '../../assets/aura.png';
 
 const Testimonials = () => {
-  // Pop-up handle karne ke liye state
   const [selectedReview, setSelectedReview] = useState(null);
 
-  // 8 Cards ka data
+  // === BULLETPROOF SCROLL LOCK ===
+  useEffect(() => {
+    if (selectedReview) {
+      // Jab popup khule, body pe 'modal-open-lock' class laga do
+      document.body.classList.add('modal-open-lock');
+    } else {
+      // Jab popup band ho, class hata do
+      document.body.classList.remove('modal-open-lock');
+    }
+
+    // Cleanup: Agar user dusre page pe chala jaye popup khula chhor kar
+    return () => {
+      document.body.classList.remove('modal-open-lock');
+    };
+  }, [selectedReview]);
+
   const reviews = [
     { 
       id: 1, 
@@ -61,16 +75,13 @@ const Testimonials = () => {
     }
   ];
 
-  // Endless scroll k liye array ko duplicate karna zaroori hota hai
   const doubledReviews = [...reviews, ...reviews];
 
   return (
-    /* Yahan maine "reveal-up" add kar diya hai flow ke mutabiq */
     <section id="testimonials" className="testimonials-section reveal reveal-up">
       <div className="testimonials-container">
         <h1 className="testimonials-title">Testimonials</h1>
 
-        {/* Endless Scroll Wrapper */}
         <div className="testimonials-slider-wrapper">
           <div className="testimonials-track">
             {doubledReviews.map((review, index) => (
@@ -102,7 +113,7 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* === PIYARA SA POP-UP MODAL === */}
+      {/* POP-UP MODAL */}
       {selectedReview && (
         <div className="modal-overlay" onClick={() => setSelectedReview(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

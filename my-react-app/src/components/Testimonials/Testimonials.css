@@ -1,13 +1,13 @@
 .testimonials-section {
   width: 100%;
   min-height: 100vh;
-  padding: 100px 0; /* Side padding hata di taake slider edge-to-edge chalay */
-  background-color: transparent; /* Global background root level pe sambhal raha hai */
+  padding: 100px 0; 
+  background-color: transparent; 
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  overflow: hidden; /* Screen se bahar ka content chupane k liye */
+  overflow: hidden; 
 }
 
 .testimonials-container {
@@ -27,19 +27,17 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  padding: 20px 0 80px 0; /* Neechay thori space takay profile image bahar na nikle */
+  padding: 20px 0 80px 0; 
 }
 
 .testimonials-track {
   display: flex;
   gap: 30px;
   width: max-content;
-  /* 40 seconds ka smooth infinite scroll */
   animation: scrollMarquee 40s linear infinite; 
   padding: 0 15px;
 }
 
-/* Jab mouse oopar aaye to scroll ruk jaye */
 .testimonials-track:hover {
   animation-play-state: paused;
 }
@@ -52,7 +50,7 @@
 /* === CARD STYLING === */
 .testimonial-card {
   position: relative;
-  width: 300px; /* Thora sa chora kiya taake acha lagay */
+  width: 300px; 
   height: 320px;
   background: rgba(255, 255, 255, 0.03);
   border: 1.5px solid rgba(255, 255, 255, 0.2);
@@ -63,10 +61,9 @@
   align-items: center;
   backdrop-filter: blur(10px);
   transition: 0.3s ease;
-  cursor: pointer; /* Clickable banaya hai */
+  cursor: pointer; 
 }
 
-/* Hover effect */
 .testimonial-card:hover {
   transform: translateY(-10px);
   border-color: #f7df1e;
@@ -89,17 +86,15 @@
   padding-top: 5px;
 }
 
-/* Scroll area sirf card mein hogi, Pop-up mein text poora hoga */
 .testimonial-scroll-area {
   width: 100%;
   max-height: 150px;
-  overflow-y: hidden; /* Scroll hata kar click pe popup ka idea behtar hai */
+  overflow-y: hidden; 
   margin-top: 20px;
   padding-right: 5px;
   position: relative;
 }
 
-/* Text fade out effect agar text lamba ho */
 .testimonial-scroll-area::after {
   content: '';
   position: absolute;
@@ -164,7 +159,6 @@
   color: #f7df1e;
 }
 
-
 /* ========================================= */
 /* POP-UP MODAL (Zabardast Design)           */
 /* ========================================= */
@@ -174,25 +168,27 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 4, 40, 0.85);
-  backdrop-filter: blur(15px);
+  background: rgba(0, 4, 40, 0.6);
+  backdrop-filter: blur(8px); 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
   padding: 20px;
+  /* Scroll behavior lock on overlay */
+  overscroll-behavior: none;
 }
 
 .modal-content {
   position: relative;
   width: 100%;
   max-width: 600px;
-  background: linear-gradient(145deg, rgba(20, 20, 40, 0.9), rgba(0, 0, 20, 0.9));
+  background: linear-gradient(145deg, rgba(20, 20, 40, 0.95), rgba(0, 0, 20, 0.95));
   border: 2px solid #f7df1e;
   border-radius: 20px;
   padding: 50px 40px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8); 
   animation: modalPopIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -271,4 +267,13 @@
   .modal-text {
     font-size: 14px;
   }
+}
+
+/* ========================================= */
+/* GLOBAL SCROLL LOCK (MUBILE & DESKTOP)     */
+/* ========================================= */
+body.modal-open-lock {
+  overflow: hidden !important;
+  touch-action: none !important; /* Mobile touch swipe ko danda deta hai */
+  overscroll-behavior: none !important; 
 }
