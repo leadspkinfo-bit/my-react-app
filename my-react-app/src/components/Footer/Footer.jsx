@@ -4,21 +4,16 @@ import './Footer.css';
 
 const Footer = () => {
   const form = useRef();
-  const [statusMessage, setStatusMessage] = useState(""); // Naya: Message dikhane ke liye
+  const [statusMessage, setStatusMessage] = useState(""); 
 
   const sendEmail = (e) => {
     e.preventDefault();
-
-    // Jaise hi button click ho, foran "Sending..." likha aa jaye
     setStatusMessage("Sending... ⏳");
 
     emailjs.sendForm('service_qr4qp7b', 'template_7n8liqs', form.current, 'yJkxdQGxx0rvpqwR9')
       .then((result) => {
-          // Send hone ke baad ka message
           setStatusMessage("Message Sent Successfully! ✅");
           form.current.reset(); 
-          
-          // 4 second baad message khud gayab ho jayega
           setTimeout(() => {
             setStatusMessage("");
           }, 4000);
@@ -53,20 +48,17 @@ const Footer = () => {
               
               <textarea name="message" placeholder="Requirements" rows="4" className="full-width" required></textarea>
               
-              {/* Action Buttons & Status */}
               <div className="form-actions-vertical">
                 <div className="file-upload-area">
                   <label className="grey-pill-btn file-btn">
                     Choose file
                     <input type="file" name="my_file" style={{display: 'none'}} />
                   </label>
-                  {/* NAYA: 50Kb Text */}
                   <small className="file-limit-text">Max file size: 50Kb</small>
                 </div>
 
                 <div className="submit-area">
                   <button type="submit" className="grey-pill-btn submit-btn">Discuss your Needs</button>
-                  {/* NAYA: Custom Status Message jo button ke sath aayega */}
                   {statusMessage && <span className="status-popup">{statusMessage}</span>}
                 </div>
               </div>
@@ -79,19 +71,50 @@ const Footer = () => {
         <div className="footer-info-area">
           <div className="info-column">
             <h3>QUICK LINKS</h3>
+            <ul className="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#clients">Clients</a></li>
+            </ul>
           </div>
           <div className="info-column">
             <h3>SERVICES</h3>
+            <ul className="footer-links">
+              <li><a href="#services">Web Development</a></li>
+              <li><a href="#services">Graphic Design</a></li>
+              <li><a href="#services">Digital Marketing</a></li>
+              <li><a href="#services">SEO Optimization</a></li>
+            </ul>
           </div>
           <div className="info-column get-in-touch">
             <h3>GET IN TOUCH</h3>
-            <p><span className="yellow-icon">📍</span> Lahore. Pakistan</p>
+            <p><span className="yellow-icon">📍</span> Lahore, Pakistan</p>
             <p><span className="yellow-icon">📞</span> +92 335 6471866</p>
             <p><span className="yellow-icon">✉️</span> Leadspk.info@gmail.com</p>
           </div>
         </div>
 
       </div>
+
+      {/* ================= NAYA BOTTOM FOOTER ================= */}
+      <div className="bottom-footer">
+        <div className="bottom-footer-content">
+          <div className="brand-info">
+            <h2>LEADS<span>PK</span></h2>
+            <p>Innovating Digital Ecosystems.</p>
+          </div>
+          <div className="copyright">
+            <p>&copy; {new Date().getFullYear()} LeadsPK Technologies. All Rights Reserved.</p>
+          </div>
+          <div className="bottom-socials">
+            <a href="https://www.facebook.com/Leadspktechnologies" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/leadspktechnologies/" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i></a>
+            <a href="https://wa.me/923356471866" target="_blank" rel="noopener noreferrer"><i className="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+      </div>
+
     </footer>
   );
 };

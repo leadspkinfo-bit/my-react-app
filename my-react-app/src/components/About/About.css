@@ -1,5 +1,5 @@
 /* ========================================= */
-/* ABOUT SECTION               */
+/* ABOUT SECTION                             */
 /* ========================================= */
 
 .about-section {
@@ -36,6 +36,7 @@
   margin: 0 0 5px 0;
   text-transform: uppercase;
   letter-spacing: 3px;
+  will-change: transform, opacity; /* GPU Performance Hint */
 }
 
 .about-title-bottom {
@@ -55,7 +56,7 @@
   line-height: 1.8;
   margin-top: 25px;
   max-width: 600px;
-  min-height: 120px; /* Taki text type hote waqt height jhatkay na lay */
+  min-height: 120px; 
 }
 
 .highlight-yellow {
@@ -63,7 +64,7 @@
   font-weight: 900;
 }
 
-/* === NAYA: TYPEWRITER CURSOR BLINK ANIMATION === */
+/* === TYPEWRITER CURSOR BLINK ANIMATION === */
 .type-cursor {
   font-weight: bold;
   color: #f7df1e;
@@ -72,9 +73,8 @@
 }
 
 @keyframes blink {
-  0% { opacity: 1; }
+  0%, 100% { opacity: 1; }
   50% { opacity: 0; }
-  100% { opacity: 1; }
 }
 
 /* --- RIGHT SIDE (IMAGE) --- */
@@ -91,19 +91,25 @@
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0px 15px 40px rgba(0,0,0,0.4));
-  transition: transform 0.3s ease;
+  /* Hover ko makkhan jaisa smooth banane ke liye cubic-bezier use kiya hai */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
 }
 
 .about-img:hover {
-  transform: translateY(-10px);
+  /* translate3d force karta hai ke mobile/PC hang na ho */
+  transform: translate3d(0, -15px, 0);
 }
 
 /* ========================================= */
-/* --- MOBILE RESPONSIVE --- */
+/* --- MOBILE RESPONSIVE (ZERO OVERLAP FIX) --- */
 /* ========================================= */
 @media (max-width: 992px) {
   .about-section {
-    padding: 80px 5%;
+    /* YAHAN FIX HAI: Top padding barha di taake Navbar overlap na kare */
+    padding: 120px 5% 60px 5% !important;
+    align-items: flex-start !important; 
+    min-height: auto;
   }
 
   .about-container {
@@ -130,6 +136,7 @@
     text-align: center;
     font-size: 15px;
     margin-top: 20px;
+    min-height: 150px; /* Safe space for typing text */
   }
 
   .about-right {
@@ -139,7 +146,7 @@
   }
 
   .about-img {
-    max-width: 250px; 
-    width: 80%;
+    max-width: 280px; 
+    width: 90%;
   }
 }

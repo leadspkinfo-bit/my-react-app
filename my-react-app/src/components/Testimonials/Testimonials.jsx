@@ -1,77 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import './Testimonials.css';
 
-import asiaPic from '../../assets/asia.png';
-import learnPic from '../../assets/learn.png';
-import auraPic from '../../assets/aura.png';
+// === SAARI TASWEERON KE IMPORTS (Clients.jsx se liye gaye hain) ===
+import mandiImg from '../../assets/mandi.png';
+import asiaImg from '../../assets/asia.png';
+import musafirronImg from '../../assets/musafiroon.png'; 
+import binazizImg from '../../assets/binaziz.png';
+import pakImg from '../../assets/pak.png';
+import learnImg from '../../assets/learn.png';
+import auraImg from '../../assets/aura.png';
 
 const Testimonials = () => {
   const [selectedReview, setSelectedReview] = useState(null);
 
-  // Jab bhi selectedReview change ho (pop-up khule ya band ho)
   useEffect(() => {
     if (selectedReview) {
-      // Background scroll LOCK kar do
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open-lock');
     } else {
-      // Background scroll UNLOCK kar do
-      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open-lock');
     }
-
-    // Cleanup function taake component hatne pe scroll wapas aa jaye
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.classList.remove('modal-open-lock');
     };
   }, [selectedReview]);
 
+  // === 7 REVIEWS WITH EXACT IMAGES ===
   const reviews = [
     { 
       id: 1, 
-      name: "ASIA KASHMIR", 
-      text: "If you're looking for a company that can handle everything from high-end graphic design to backend web support, this is it. They’ve managed our digital presence for over a year, and the consistency is impressive. Whether it’s a quick marketing banner or a major site update, they deliver on time and with a level of professionalism that is hard to find.", 
-      img: asiaPic 
+      name: "Maindi", 
+      text: "Hamari company ki nayi branding (Logo aur Identity) ke liye LeadsPK ka kaam la-jawab hai. Unho ne hamare vision ko bohot khoobsurti se visuals mein convert kiya. Creative aur professional team!", 
+      img: mandiImg 
     },
     { 
       id: 2, 
-      name: "Learn-e-Travel", 
-      text: "I’ve worked with many agencies, but the design team here is in a league of their own. They took our vague ideas for a brand refresh and turned them into a stunning UI/UX experience that our users absolutely love. The transition from graphic design to the final digital interface was flawless.", 
-      img: learnPic 
+      name: "ASIA KASHMIR", 
+      text: "LeadsPK hamare social media handles ko manage kar rahi hai aur engagement rates mein wazay farq nazar aa raha hai. Inki content strategy aur creative captions hamari brand voice ke sath bilkul match karti hain.", 
+      img: asiaImg 
     },
     { 
       id: 3, 
-      name: "Aura Fragrance", 
-      text: "We needed a complete overhaul of our e-commerce platform and these guys delivered beyond expectations. From website speed optimization to fixing our payment gateway issues, they handled everything seamlessly. Highly recommended for any business scaling up.", 
-      img: auraPic 
+      name: "Musafiroon", 
+      text: "Hamein apni brand ke liye ek seamless mobile app chahiye thi aur LeadsPK ne hamari umeedon se barh kar kaam kiya. App ka interface bohot smooth hai aur backend management bohot easy hai. Great job team!", 
+      img: musafirronImg 
     },
     { 
       id: 4, 
-      name: "Tech Innovators", 
-      text: "The best tech team we have ever collaborated with. They understand business logic as well as they understand code. Their custom software solution saved us hundreds of hours of manual work.", 
-      img: asiaPic 
+      name: "Bin Aziz", 
+      text: "Hamein apni promotional campaigns ke liye high-quality video editing ki zaroorat thi. LeadsPK ne hamein aisi videos bana kar dein jo na sirf eye-catching hain balkay hamari sales conversion mein bhi help kar rahi hain.", 
+      img: binazizImg 
     },
     { 
       id: 5, 
-      name: "Global Logistics", 
-      text: "Outstanding service! They built a tracking dashboard for us that is not only visually appealing but also lightning fast. Their support team is always available when we need them.", 
-      img: learnPic 
+      name: "Pak", 
+      text: "LeadsPK sirf ek vendor nahi balkay ek behtareen strategic partner hai. Inki IT consultancy ne hamein sahi tools aur technologies choose karne mein madad di jis se hamara kaam kaafi efficient ho gaya hai.", 
+      img: pakImg 
     },
     { 
       id: 6, 
-      name: "Urban Estates", 
-      text: "Leadspk completely transformed our real estate portal. The property search features are now incredibly smooth, and we've seen a 40% increase in customer engagement since the redesign.", 
-      img: auraPic 
+      name: "Learn-e-Travel", 
+      text: "LeadsPK ne hamari business website ko bilkul naye siray se design kiya. Inki team ne na sirf design ko modern banaya balkay site ki speed aur user experience bhi behtareen hai. Highly recommended for professional web solutions!", 
+      img: learnImg 
     },
     { 
       id: 7, 
-      name: "Fitness Pro", 
-      text: "They created an amazing booking system for our gym classes. The mobile responsiveness is perfect, and our members love how easy it is to use. Great job!", 
-      img: asiaPic 
-    },
-    { 
-      id: 8, 
-      name: "Foodie Delight", 
-      text: "From branding to social media management and our online ordering system, they have been our backbone. We couldn't have scaled to 3 branches without their digital expertise.", 
-      img: learnPic 
+      name: "Aura Fragrance", 
+      text: "We needed a complete overhaul of our e-commerce platform and these guys delivered beyond expectations. From website speed optimization to fixing our payment gateway issues, they handled everything seamlessly. Highly recommended for any business scaling up.", 
+      img: auraImg 
     }
   ];
 
@@ -122,7 +117,11 @@ const Testimonials = () => {
             </button>
             <div className="modal-quote">“</div>
             <div className="modal-img-container">
-              {selectedReview.img && <img src={selectedReview.img} alt={selectedReview.name} />}
+              {selectedReview.img ? (
+                <img src={selectedReview.img} alt={selectedReview.name} />
+              ) : (
+                <div style={{ background: '#333', width: '100%', height: '100%' }}></div>
+              )}
             </div>
             <h3 className="modal-name">{selectedReview.name}</h3>
             <p className="modal-text">{selectedReview.text}</p>
