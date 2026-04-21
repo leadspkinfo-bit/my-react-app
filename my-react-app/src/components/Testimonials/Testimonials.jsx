@@ -8,19 +8,19 @@ import auraPic from '../../assets/aura.png';
 const Testimonials = () => {
   const [selectedReview, setSelectedReview] = useState(null);
 
-  // === BULLETPROOF SCROLL LOCK ===
+  // Jab bhi selectedReview change ho (pop-up khule ya band ho)
   useEffect(() => {
     if (selectedReview) {
-      // Jab popup khule, body pe 'modal-open-lock' class laga do
-      document.body.classList.add('modal-open-lock');
+      // Background scroll LOCK kar do
+      document.body.style.overflow = 'hidden';
     } else {
-      // Jab popup band ho, class hata do
-      document.body.classList.remove('modal-open-lock');
+      // Background scroll UNLOCK kar do
+      document.body.style.overflow = 'unset';
     }
 
-    // Cleanup: Agar user dusre page pe chala jaye popup khula chhor kar
+    // Cleanup function taake component hatne pe scroll wapas aa jaye
     return () => {
-      document.body.classList.remove('modal-open-lock');
+      document.body.style.overflow = 'unset';
     };
   }, [selectedReview]);
 
