@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom'; 
+import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 import './Navbar.css';
 import logo from '../../assets/logo.png'; 
 
@@ -7,10 +7,12 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const location = useLocation();
+  const navigate = useNavigate();
 
-  // === SCROLL SPY LOGIC ===
+  // === SCROLL SPY LOGIC (Sirf Home Page k liye) ===
   useEffect(() => {
-    if (location.pathname === '/contact') return;
+    // Agar Contact ya Case Study page par hain, toh scroll spy ko rok do
+    if (location.pathname !== '/') return;
 
     const sections = document.querySelectorAll('section[id]');
     
@@ -26,6 +28,27 @@ const Navbar = () => {
 
     return () => sections.forEach((section) => observer.unobserve(section));
   }, [location.pathname]);
+
+  // === SMOOTH SCROLL LOGIC ===
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false); // Click pe mobile menu band ho jaye
+
+    if (location.pathname !== '/') {
+      // Agar kisi aur page pe hain, toh wapas home pe aao aur us hissay pe jao
+      navigate(`/#${id}`);
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      // Agar home page pe hi hain, toh direct smooth scroll
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   return (
     <header className="header-wrapper">
@@ -62,29 +85,29 @@ const Navbar = () => {
           </div>
 
           {/* === PERFECT ORDER TAYYAR HAI === */}
-          <li className={activeSection === 'home' || activeSection === 'hero' || (location.pathname === '/' && activeSection === '') ? 'active' : ''}>
-            <a href="/#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
+          <li className={location.pathname === '/' && (activeSection === 'home' || activeSection === 'hero' || activeSection === '') ? 'active' : ''}>
+            <a href="/#home" onClick={(e) => handleNavClick(e, 'home')}>Home</a>
           </li>
           
-          <li className={activeSection === 'services' ? 'active' : ''}>
-            <a href="/#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
+          <li className={location.pathname === '/' && activeSection === 'services' ? 'active' : ''}>
+            <a href="/#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a>
           </li>
           
-          <li className={activeSection === 'clients' ? 'active' : ''}>
-            <a href="/#clients" onClick={() => setIsMobileMenuOpen(false)}>Clients</a>
+          <li className={location.pathname === '/' && activeSection === 'clients' ? 'active' : ''}>
+            <a href="/#clients" onClick={(e) => handleNavClick(e, 'clients')}>Clients</a>
           </li>
           
-          <li className={activeSection === 'testimonials' ? 'active' : ''}>
-            <a href="/#testimonials" onClick={() => setIsMobileMenuOpen(false)}>Testimonials</a>
+          <li className={location.pathname === '/' && activeSection === 'testimonials' ? 'active' : ''}>
+            <a href="/#testimonials" onClick={(e) => handleNavClick(e, 'testimonials')}>Testimonials</a>
           </li>
 
-          {/* About ab Case Study se bilkul pehle hai */}
-          <li className={activeSection === 'about' ? 'active' : ''}>
-            <a href="/#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
+          <li className={location.pathname === '/' && activeSection === 'about' ? 'active' : ''}>
+            <a href="/#about" onClick={(e) => handleNavClick(e, 'about')}>About</a>
           </li>
           
-          <li className={activeSection === 'case-study' ? 'active' : ''}>
-            <a href="/#case-study" onClick={() => setIsMobileMenuOpen(false)}>Case Study</a>
+          {/* === YAHAN FIX HAI: Case Study ab Alag Page hai === */}
+          <li className={location.pathname === '/case-study' ? 'active' : ''}>
+            <Link to="/case-study" onClick={() => setIsMobileMenuOpen(false)}>Case Study</Link>
           </li>
           
           {/* Mobile wala Yellow Contact Us Button */}

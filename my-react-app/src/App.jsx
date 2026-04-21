@@ -6,6 +6,7 @@ import Hero from './components/Hero/Hero';
 import Expertise from './components/Expertise/Expertise';
 import Clients from './components/Clients/Clients';
 import Testimonials from './components/Testimonials/Testimonials';
+import CaseStudy from './components/CaseStudy/CaseStudy'; 
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
@@ -13,13 +14,12 @@ import './App.css';
 
 const AppContent = () => {
   const location = useLocation();
+  // Contact page ke ilawa sab pages par footer dikhega (Case Study par bhi dikhega)
   const showFooter = location.pathname !== '/contact';
 
   useEffect(() => {
     const reveals = document.querySelectorAll(".reveal");
     
-    // YAHAN PERFORMANCE FIX HAI: Scroll Event ki jagah IntersectionObserver use kiya hai
-    // Ye browser ko hang nahi karta aur 60fps smooth scroll deta hai
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -31,12 +31,10 @@ const AppContent = () => {
       threshold: 0.1 
     });
 
-    // Saare elements ko observe karna shuru karo
     reveals.forEach((reveal) => {
       observer.observe(reveal);
     });
 
-    // Cleanup function taake memory leak na ho
     return () => {
       reveals.forEach((reveal) => {
         observer.unobserve(reveal);
@@ -49,6 +47,7 @@ const AppContent = () => {
       <CustomCursor />
       <Navbar />
       <Routes>
+        {/* === HOME PAGE (Bina Case Study ke) === */}
         <Route path="/" element={
           <>
             <Hero />
@@ -58,6 +57,9 @@ const AppContent = () => {
             <About />
           </>
         } />
+        
+        {/* === ALAG PAGES === */}
+        <Route path="/case-study" element={<CaseStudy />} /> 
         <Route path="/contact" element={<Contact />} />
       </Routes>
       {showFooter && <Footer />}
