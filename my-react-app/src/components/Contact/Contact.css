@@ -156,3 +156,8 @@
     transform: translate3d(0, 0, 0) scale(1) !important;
   }
 }
+.info-card-link {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: block;
+}
