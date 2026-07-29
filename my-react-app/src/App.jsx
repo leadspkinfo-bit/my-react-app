@@ -17,6 +17,11 @@ const AppContent = () => {
   // Contact page ke ilawa sab pages par footer dikhega (Case Study par bhi dikhega)
   const showFooter = location.pathname !== '/contact';
 
+  // Route change par page hamesha top se start ho (home page par jahan bhi scroll ho)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   useEffect(() => {
     const reveals = document.querySelectorAll(".reveal");
     

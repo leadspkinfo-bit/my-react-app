@@ -46,14 +46,29 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* --- FORM AREA --- */}
+        <div className="contact-form-footer-area reveal reveal-up">
+          <form className="glass-form" onSubmit={handleSubmit}>
+            <h2 className="form-title">What are you looking for?</h2>
+            <div className="form-grid">
+              <input type="text" name="name" placeholder="Name" required value={formData.name} onChange={handleChange} />
+              <input type="email" name="email" placeholder="Email" required value={formData.email} onChange={handleChange} />
+              <input type="text" name="seeking" placeholder="What are you seeking?" className="full-width" value={formData.seeking} onChange={handleChange} />
+              <input type="tel" name="phone" placeholder="Phone" className="full-width" required value={formData.phone} onChange={handleChange} />
+              <textarea name="message" placeholder="Message" rows="4" className="full-width" required value={formData.message} onChange={handleChange}></textarea>
+            </div>
+            <button type="submit" className="submit-btn">Send Message</button>
+          </form>
+        </div>
+
         {/* Info Cards Area */}
         <div className="info-cards-wrapper">
-          
+
           {/* 1. Visit Our Hub (Google Maps Link) */}
-          <a 
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`} 
-            target="_blank" 
-            rel="noopener noreferrer" 
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`}
+            target="_blank"
+            rel="noopener noreferrer"
             className="info-card-link"
           >
             <div className="info-card reveal contact-card-1">
@@ -87,21 +102,6 @@ const Contact = () => {
             </div>
           </a>
 
-        </div>
-
-        {/* --- FORM AREA --- */}
-        <div className="contact-form-footer-area reveal reveal-up">
-          <form className="glass-form" onSubmit={handleSubmit}>
-            <h2 className="form-title">What are you looking for?</h2>
-            <div className="form-grid">
-              <input type="text" name="name" placeholder="Name" required value={formData.name} onChange={handleChange} />
-              <input type="email" name="email" placeholder="Email" required value={formData.email} onChange={handleChange} />
-              <input type="text" name="seeking" placeholder="What are you seeking?" className="full-width" value={formData.seeking} onChange={handleChange} />
-              <input type="tel" name="phone" placeholder="Phone" className="full-width" required value={formData.phone} onChange={handleChange} />
-              <textarea name="message" placeholder="Message" rows="4" className="full-width" required value={formData.message} onChange={handleChange}></textarea>
-            </div>
-            <button type="submit" className="submit-btn">Send Message</button>
-          </form>
         </div>
 
       </div>
